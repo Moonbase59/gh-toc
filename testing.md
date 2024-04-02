@@ -7,11 +7,11 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
 ## The generated ToC (copy-pasted)
 
 <!-- paste begin -->
-- [gh-toc](#ghtoc)
-  - [The generated ToC (copy & pasted)](#the-generated-toc-copy--pasted)
+- [gh-toc](#gh-toc)
+  - [The generated ToC (copy-pasted)](#the-generated-toc-copy-pasted)
   - [Foreign characters](#foreign-characters)
     - [Accents: äöüßÄÖÜẞ áéíóú ÁÉÍÓÚ àèìòù ñÑõÕ çÇ øØ](#accents-äöüßäöüß-áéíóú-áéíóú-àèìòù-ññõõ-çç-øø)
-    - [Russian: Какой-то русский текст…](#russian-какойто-русский-текст)
+    - [Russian: Какой-то русский текст…](#russian-какой-то-русский-текст)
   - [Numbers: 0123 ⑴⑵⑶ ⅰ ⅱ ⅲ Ⅰ Ⅱ Ⅲ ²³ ¼½](#numbers-0123--ⅰ-ⅱ-ⅲ-ⅰ-ⅱ-ⅲ--)
   - [Underscore within code tags](#underscore-within-code-tags)
     - [Some `code_with_underscores += a*b`](#some-code_with_underscores--ab)

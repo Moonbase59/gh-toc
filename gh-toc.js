@@ -35,7 +35,7 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex)
             var headingAnchor = headingTitle.toLowerCase();
             // remove everything that is NOT a (Unicode) Letter, (Unicode) Number decimal,
             // (Unicode) Number letter, white space, underscore or hyphen
-            headingAnchor = headingAnchor.replace(/[^\p{L}\p{Nd}\p{Nl}\s_-`]/gu, "");
+            headingAnchor = headingAnchor.replace(/[^\p{L}\p{Nd}\p{Nl}\s_\-`]/gu, "");
             // remove sequences of *
             headingAnchor = headingAnchor.replace(/\*(?=.*)/gu, "");
             // Underscore handling is complex:
