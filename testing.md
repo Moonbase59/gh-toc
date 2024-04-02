@@ -4,23 +4,58 @@ These are some testing samples for [gh-toc](https://moonbase59.github.io/gh-toc/
 
 Let’s check if these coincide with whatever GitHub Markdown comes up with!
 
-## Foreign characters: äöüßÄÖÜẞ áéíóú ÁÉÍÓÚ àèìòù ñÑõÕ çÇ øØ
+## The generated ToC (copy & pasted)
+
+<!-- paste begin -->
+- [gh-toc](#gh-toc)
+  - [The generated ToC (copy & pasted)](#the-generated-toc-copy--pasted)
+  - [Foreign characters](#foreign-characters)
+    - [Accents: äöüßÄÖÜẞ áéíóú ÁÉÍÓÚ àèìòù ñÑõÕ çÇ øØ](#accents-äöüßäöüß-áéíóú-áéíóú-àèìòù-ññõõ-çç-øø)
+    - [Russian: Какой-то русский текст…](#russian-какой-то-русский-текст)
+  - [Numbers: 0123 ⑴⑵⑶ ⅰ ⅱ ⅲ Ⅰ Ⅱ Ⅲ ²³ ¼½](#numbers-0123--ⅰ-ⅱ-ⅲ-ⅰ-ⅱ-ⅲ--)
+  - [Underscore special cases](#underscore-special-cases)
+    - [Some `code_with_underscores += a*b`](#some-codewithunderscores--ab)
+    - [More `code_bars`](#more-code_bars)
+    - [Just __ some underlines, or __dunders__](#just-__-some-underlines-or-dunders)
+    - [___](#___)
+    - [__](#__)
+    - [__dunder__](#dunder)
+    - [_emphasis_](#emphasis)
+    - [_ emph _](#_-emph-_)
+    - [_in a *sentence*_](#in-a-sentence)
+    - [_in_word_parsing_](#in_word_parsing)
+  - [Markdown](#markdown)
+    - [Some _emphasized_ text](#some-emphasized-text)
+    - [Some **bold** text](#some-bold-text)
+    - [Some ~~strikethrough~ text](#some-strikethrough-text)
+  - [More character codes](#more-character-codes)
+    - [Apostrophes and such: "a" 'b' “c” ‘d’ »e« ›f‹ „g“ ‚h‘](#apostrophes-and-such-a-b-c-d-e-f-g-h)
+    - [(Parentheses), [brackets] and {curlies}](#parentheses-brackets-and-curlies)
+    - [Arrows: ←↓↑→ ↕⇵ ⏎](#arrows---)
+    - [Symbols: ☯ ☎ 🂡](#symbols---)
+    - [Currency: $ € £ ₽ ¤](#currency-----)
+    - [Other: ℗©™](#other-)
+<!-- paste end -->
+
+## Foreign characters
+### Accents: äöüßÄÖÜẞ áéíóú ÁÉÍÓÚ àèìòù ñÑõÕ çÇ øØ
+### Russian: Какой-то русский текст…
+
 ## Numbers: 0123 ⑴⑵⑶ ⅰ ⅱ ⅲ Ⅰ Ⅱ Ⅲ ²³ ¼½
 
-## Specials
+## Underscore special cases
 ### Some `code_with_underscores += a*b`
 ### More `code_bars`
+### Just __ some underlines, or __dunders__
+### ___
+### __
+### __dunder__
+### _emphasis_
+### _ emph _
+### _in a *sentence*_
+### _in_word_parsing_
 
-### Underscore stuff
-#### Just __ some underlines, or __dunders__
-#### ___
-#### __
-#### __dunder__
-#### _emphasis_
-#### _ emph _
-#### _in a *sentence*_
-#### _in_word_parsing_
-
+## Markdown
 ### Some _emphasized_ text
 ### Some **bold** text
 ### Some ~~strikethrough~ text

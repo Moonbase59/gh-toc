@@ -31,7 +31,6 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex)
 
             headingLevel -= minHeading;
           
-            //var headingAnchor = headingTitle.toLowerCase().replace(/[^_\d\w\s-]/gu, "").replace(/\*(?=.*)/gu, "").replace(/ /gu, "-");
             // make everything (Unicode-aware) lower case
             var headingAnchor = headingTitle.toLowerCase();
             // remove everything that is NOT a (Unicode) Letter, (Unicode) Number decimal,
@@ -39,10 +38,9 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex)
             headingAnchor = headingAnchor.replace(/[^\p{L}\p{Nd}\p{Nl}\s_-]/gu, "");
             // remove sequences of *
             headingAnchor = headingAnchor.replace(/\*(?=.*)/gu, "");
-            // TODO: Find a good way to keep underscores, except those for Markdown italics
-            // Right now, we’re just keeping underscores
-
-            // replace remaining blanks with '-'
+            // Try to keep underscores, except those for Markdown italics
+            headingAnchor = headingAnchor.replace(/(\s*)_+([^\s_].+[^\s_])_+(\s*)/gu, "$1$2$3");
+            // Now replace remaining blanks with '-'
             headingAnchor = headingAnchor.replace(/ /gu, "-");
           
             if(headingAnchor in anchorTracker)
