@@ -4,12 +4,12 @@ A simple web page to quickly create table of content Markdown for GitHub Markdow
 
 ## Overview
 
-> I could never find an easy to use, online table-of-content maker for GitHub markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.
+> I could never find an easy to use, online table-of-content maker for GitHub Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.
 > _— (Words from the [original creator](https://imthenachoman.github.io/nGitHubTOC/))_
 
 I fully agree. This is just a fork for my use, with no Google Analytics and some bugfixes.
 
-This page just uses JavaScript to extract headings from a markdown file and return table-of-content markdown.
+This page just uses JavaScript to extract headings from a Markdown file and return table-of-content Markdown.
 
 I did lots of testing and rewrote the RegExes to be as compatbile with GitHub as possible. So far it works great, even for difficult cases.
 

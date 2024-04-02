@@ -44,19 +44,19 @@
     </head>
     <body>
         <h1>gh-toc</h1>
-        <p>A simple web page to quickly create table of content markdown for GitHub markdown files.</p>
+        <p>A simple web page to quickly create table of content Markdown for GitHub Markdown files.</p>
         <p><a href="https://github.com/moonbase59/gh-toc">https://github.com/moonbase59/gh-toc</a>
         <h2>Overview</h2>
-        <blockquote>I could never find an easy to use, online table-of-content maker for GitHub markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.<br>— <em>(Words from the <a href="https://imthenachoman.github.io/nGitHubTOC/">original creator</a>)</em></blockquote>
+        <blockquote>I could never find an easy to use, online table-of-content maker for GitHub Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.<br>— <em>(Words from the <a href="https://imthenachoman.github.io/nGitHubTOC/">original creator</a>)</em></blockquote>
         <p>I fully agree. This is just a fork for my use, with no Google Analytics and some bugfixes.</p>
-        <p>This page just uses JavaScript to extract headings from a markdown file and return table-of-content markdown.</p>
+        <p>This page just uses JavaScript to extract headings from a Markdown file and return table-of-content Markdown.</p>
         <p>I did lots of testing and rewrote the RegExes to be as compatbile with GitHub as possible. So far it works great, even for difficult cases. Try the <a href="https://github.com/Moonbase59/gh-toc/blob/master/testing.md?plain=1">testing.md</a> example!</p>
         <h2>The Real Magic</h2>
         <p>
             <table>
                 <tr>
-                    <th>markdown input</th>
-                    <th>table of content output</th>
+                    <th>Markdown input</th>
+                    <th>Table of Content output</th>
                 </tr>
                 <tr>
                     <td><textarea id="inputMD"></textarea></td>
@@ -64,7 +64,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <label for="minHeading">minimum heading level:</label>
+                        <label for="minHeading">Minimum heading level:</label>
                         
                         <select id="minHeading">
                             <option value="1">1</option>
@@ -77,7 +77,7 @@
                         
                         <br /><br />
                         
-                        <label for="maxHeading">maximum heading level:</label>
+                        <label for="maxHeading">Maximum heading level:</label>
                         
                         <select id="maxHeading">
                             <option value="1">1</option>
@@ -90,7 +90,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><button onclick="doIt(); return false;">TOC it</button></td>
+                    <td colspan="2"><button onclick="doIt(); return false;">TOC it!</button></td>
                 </tr>
             </table>
         </p>
