@@ -9,6 +9,7 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
 
 ## Specials
 ### Some `code_with_underscores += a*b`
+### Just __ some underlines, or __dunders__
 ### Some _emphasized_ text
 ### Some **bold** text
 ### Some ~~strikethrough~ text
