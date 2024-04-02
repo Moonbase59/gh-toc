@@ -31,7 +31,16 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex)
 
             headingLevel -= minHeading;
           
-            var headingAnchor = headingTitle.toLowerCase().replace(/[^_\d\w-\s]/g, "").replace(/\*(?=.*)/g, "").replace(/ /g, "-");
+            //var headingAnchor = headingTitle.toLowerCase().replace(/[^_\d\w\s-]/gu, "").replace(/\*(?=.*)/gu, "").replace(/ /gu, "-");
+            // make everything (Unicode-aware) lower case
+            var headingAnchor = headingTitle.toLowerCase();
+            // remove everything that is NOT a (Unicode) Letter, Number,
+            // white space, underscore or hyphen
+            headingAnchor = headingAnchor.replace(/[^\p{L}\p{N}\s_-]/gu, "");
+            // remove sequences of *
+            headingAnchor = headingAnchor.replace(/\*(?=.*)/gu, "");
+            // replace remaining blanks with '-'
+            headingAnchor = headingAnchor.replace(/ /gu, "-");
           
             if(headingAnchor in anchorTracker)
             {

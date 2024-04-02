@@ -5,7 +5,7 @@ These are some testing samples for [gh-toc](https://moonbase59.github.io/gh-toc/
 Let’s check if these coincide with whatever GitHub Markdown comes up with!
 
 ## Foreign characters: äöüßÄÖÜẞ áéíóú ÁÉÍÓÚ àèìòù ñÑõÕ çÇ øØ
-## Numbers: 0123 ⑴⑵⑶ ⅰ ⅱ ⅲ Ⅰ Ⅱ Ⅲ
+## Numbers: 0123 ⑴⑵⑶ ⅰ ⅱ ⅲ Ⅰ Ⅱ Ⅲ ²³ ¼½
 
 ## Specials
 ### Some `code_with_underscores += a*b`
