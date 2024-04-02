@@ -39,6 +39,9 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex)
             headingAnchor = headingAnchor.replace(/[^\p{L}\p{Nd}\p{Nl}\s_-]/gu, "");
             // remove sequences of *
             headingAnchor = headingAnchor.replace(/\*(?=.*)/gu, "");
+            // TODO: Find a good way to keep underscores, except those for Markdown italics
+            // Right now, we’re just keeping underscores
+
             // replace remaining blanks with '-'
             headingAnchor = headingAnchor.replace(/ /gu, "-");
           
