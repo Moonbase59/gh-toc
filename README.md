@@ -15,6 +15,6 @@ This page just uses JavaScript to extract headings from a markdown file and retu
 
 [testing.md](testing.md) is a short test file with a lot of odd characters. Copy its contents into the input box of gh-toc to see what gets generated.
 
-## The Magic
+## The Real Magic
 
 https://moonbase59.github.io/gh-toc/

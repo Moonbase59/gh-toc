@@ -35,11 +35,18 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex)
             var headingAnchor = headingTitle.toLowerCase();
             // remove everything that is NOT a (Unicode) Letter, (Unicode) Number decimal,
             // (Unicode) Number letter, white space, underscore or hyphen
-            headingAnchor = headingAnchor.replace(/[^\p{L}\p{Nd}\p{Nl}\s_-]/gu, "");
+            headingAnchor = headingAnchor.replace(/[^\p{L}\p{Nd}\p{Nl}\s_-`]/gu, "");
             // remove sequences of *
             headingAnchor = headingAnchor.replace(/\*(?=.*)/gu, "");
-            // Try to keep underscores, except those for Markdown italics
-            headingAnchor = headingAnchor.replace(/(\s*)_+([^\s_].+[^\s_])_+(\s*)/gu, "$1$2$3");
+            // Underscore handling is complex:
+            //   Alternative 1: Keep in `code` ``blocks``, and remove the backticks
+            //     --> match group $2
+            //   Alternative 2: Remove if not in-word
+            //     --> $3 - whitespace before, $4 content, $5 whitespace after
+            headingAnchor = headingAnchor.replace(
+                /(`(?:`*)?)(.*?)(?:\1)|(\s*)_+([^\s_].+[^\s_])_+(\s*)/gu,
+                "$2$3$4$5"
+            );
             // Now replace remaining blanks with '-'
             headingAnchor = headingAnchor.replace(/ /gu, "-");
           

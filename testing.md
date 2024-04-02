@@ -4,18 +4,20 @@ These are some testing samples for [gh-toc](https://moonbase59.github.io/gh-toc/
 
 Let’s check if these coincide with whatever GitHub Markdown comes up with!
 
-## The generated ToC (copy & pasted)
+## The generated ToC (copy-pasted)
 
 <!-- paste begin -->
-- [gh-toc](#gh-toc)
+- [gh-toc](#ghtoc)
   - [The generated ToC (copy & pasted)](#the-generated-toc-copy--pasted)
   - [Foreign characters](#foreign-characters)
     - [Accents: äöüßÄÖÜẞ áéíóú ÁÉÍÓÚ àèìòù ñÑõÕ çÇ øØ](#accents-äöüßäöüß-áéíóú-áéíóú-àèìòù-ññõõ-çç-øø)
-    - [Russian: Какой-то русский текст…](#russian-какой-то-русский-текст)
+    - [Russian: Какой-то русский текст…](#russian-какойто-русский-текст)
   - [Numbers: 0123 ⑴⑵⑶ ⅰ ⅱ ⅲ Ⅰ Ⅱ Ⅲ ²³ ¼½](#numbers-0123--ⅰ-ⅱ-ⅲ-ⅰ-ⅱ-ⅲ--)
-  - [Underscore special cases](#underscore-special-cases)
-    - [Some `code_with_underscores += a*b`](#some-codewithunderscores--ab)
+  - [Underscore within code tags](#underscore-within-code-tags)
+    - [Some `code_with_underscores += a*b`](#some-code_with_underscores--ab)
     - [More `code_bars`](#more-code_bars)
+    - [We might have ``double_quoted_code``](#we-might-have-double_quoted_code)
+  - [Underscore special cases](#underscore-special-cases)
     - [Just __ some underlines, or __dunders__](#just-__-some-underlines-or-dunders)
     - [___](#___)
     - [__](#__)
@@ -24,6 +26,7 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
     - [_ emph _](#_-emph-_)
     - [_in a *sentence*_](#in-a-sentence)
     - [_in_word_parsing_](#in_word_parsing)
+    - [_another_in_word_example_](#another_in_word_example)
   - [Markdown](#markdown)
     - [Some _emphasized_ text](#some-emphasized-text)
     - [Some **bold** text](#some-bold-text)
@@ -43,9 +46,12 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
 
 ## Numbers: 0123 ⑴⑵⑶ ⅰ ⅱ ⅲ Ⅰ Ⅱ Ⅲ ²³ ¼½
 
-## Underscore special cases
+## Underscore within code tags
 ### Some `code_with_underscores += a*b`
 ### More `code_bars`
+### We might have ``double_quoted_code``
+
+## Underscore special cases
 ### Just __ some underlines, or __dunders__
 ### ___
 ### __
@@ -54,6 +60,7 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
 ### _ emph _
 ### _in a *sentence*_
 ### _in_word_parsing_
+### _another_in_word_example_
 
 ## Markdown
 ### Some _emphasized_ text
@@ -73,3 +80,5 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
 ```
 
 Lots of characters normally _not_ in headings, but they shouldn’t break link generation.
+
+**Enjoy!**
