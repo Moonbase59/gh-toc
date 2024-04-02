@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>nGitHubTOC</title>
+        <title>gh-toc</title>
         <style>
             table
             {
@@ -23,15 +23,7 @@
                 width: 50px;
             }
         </style>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66393354-2"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-66393354-2');
-        </script>
-        <script src="nGitHubTOC.js"></script>
+        <script src="gh-toc.js"></script>
         <script>
             function doIt()
             {
@@ -50,11 +42,13 @@
         </script>
     </head>
     <body>
-        <h1>nGitHubTOC</h1>
+        <h1>gh-toc</h1>
         <p>a simple web page to quickly create table of content markdown for GitHub markdown files</p>
-        <p><a href="https://github.com/imthenachoman/nGitHubTOC">https://github.com/imthenachoman/nGitHubTOC</a>
+        <p><a href="https://github.com/moonbase59/gh-toc">https://github.com/moonbase59/gh-toc</a>
         <h2>Overview</h2>
-        <p>I could never find an easy to use, online table-of-content maker for GitHub markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.</p>
+        <quote>I could never find an easy to use, online table-of-content maker for GitHub markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.</quote>
+        <p>(Words from the [original creator](https://imthenachoman.github.io/nGitHubTOC/). I fully agree.
+        This is just a fork for my use, with no Google Analytics and some bugfixes.</p>
         <p>This page just uses JavaScript to extract headings from a markdown file and return table-of-content markdown.</p>
         <h2>The Magic</h2>
         <p>
