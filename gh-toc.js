@@ -50,15 +50,13 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex)
             // Now replace remaining blanks with '-'
             headingAnchor = headingAnchor.replace(/ /gu, "-");
           
-            if(headingAnchor in anchorTracker)
+            // need a loop since result might already been taken
+            while (headingAnchor in anchorTracker)
             {
                 anchorTracker[headingAnchor]++;
                 headingAnchor = headingAnchor + "-" + anchorTracker[headingAnchor];
             }
-            else
-            {
-                anchorTracker[headingAnchor] = 0;
-            }
+            anchorTracker[headingAnchor] = 0;
 
             outputMD += " ".repeat(headingLevel * 2) + "- [" + headingTitle + "](#" + headingAnchor + ")\n";
         }
