@@ -1,5 +1,6 @@
 function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
 
+    console.log(fullMD, addAnchors, useID);
     var anchorAttribute = "name";
     if (useID) {
         anchorAttribute = "id";
@@ -45,10 +46,13 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
             }
         }
 
-        var match = /^(#+) (.*)$/.exec(inputMDLine);
+        //var match = /^(#+) (.*)$/.exec(inputMDLine);
+        // breakdown: $1=ATX header, $2=title, $3=lat {} block incl. blank before
+        var match = /^(#+) (.*?)( {.*})?$/.exec(inputMDLine);
         if (!frontmatterEndExpected && !codeTagEndExpected && match) {
             var headingLevel = match[1].length;
             var headingTitle = match[2].replace(/<.*?>/g, "");
+            var headingAttrib = match[3];
 
             if(headingLevel < minHeading || headingLevel > maxHeading) {
                 continue;
@@ -86,7 +90,8 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
                 "sequence": 0,
                 "line": line,
                 "level": headingLevel,
-                "title": headingTitle
+                "title": headingTitle,
+                "attrib": headingAttrib
             }
 
             outputMD += " ".repeat(outputHeadingLevel * 2) + "- [" + headingTitle + "](#" + headingAnchor + ")\n";
@@ -104,15 +109,24 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
         + "<!-- ToC end -->";
 
     // if addAnchors requested, rebuild affected Markdown lines from the anchorTracker
-    if (fullMD && addAnchors) {
+    if (fullMD && ["HTML", "braces"].includes(addAnchors)) {
         for (const [k, v] of Object.entries(anchorTracker)) {
             var inputMDLine = inputMDLines[v["line"]];
-            // break down: $1=whitespace before, $2=content, $3=whitespace after
+            // breakdown: $1=whitespace before, $2=content, $3=whitespace after
             var parts = /^([\s]*)(.*?)([\s]*)$/.exec(inputMDLine);
             
-            var anchor = '<a ' + anchorAttribute + '="' + k + '"></a>';
-            var outputMDLine =
-                parts[1] + "#".repeat(v["level"]) + " " + anchor + v["title"] + parts[3];
+            if (addAnchors == "HTML") {
+                // construct ### <a name="name"></a>Heading Title
+                var anchor = '<a ' + anchorAttribute + '="' + k + '"></a>';
+                var outputMDLine =
+                    //parts[1] + "#".repeat(v["level"]) + " " + anchor + v["title"] + v["attrib"] + parts[3];
+                    parts[1] + "#".repeat(v["level"]) + " " + anchor + v["title"] + parts[3];
+            } else if (addAnchors == "braces") {
+                // construct ### Heading Title {#name}
+                var anchor = ' {#' + k + '}';
+                var outputMDLine =
+                    parts[1] + "#".repeat(v["level"]) + " " + v["title"] + anchor + parts[3];
+            }
 
             inputMDLines[v["line"]] = outputMDLine;
         }

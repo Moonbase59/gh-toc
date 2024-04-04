@@ -48,7 +48,7 @@
                 var minHeading = document.querySelector("#minHeading").value;
                 var maxHeading = document.querySelector("#maxHeading").value;
                 var fullMD = document.querySelector("#fullMD").checked;
-                var addAnchors = document.querySelector("#addAnchors").checked;
+                var addAnchors = document.querySelector("#addAnchors").value;
                 var useID = document.querySelector("#useID").checked;
                 
                 if(minHeading > maxHeading) {
@@ -98,7 +98,7 @@
                             <option value="6">6</option>
                         </select>
                         
-                        &emsp;
+                        &ensp;
                         
                         <label for="maxHeading">Maximum heading level:</label>
                         
@@ -111,26 +111,31 @@
                             <option value="6" selected>6</option>
                         </select>
                         
-                        &emsp;
+                        &ensp;
                         
                         <label for="fullMD"
                             title="Output the full Markdown file? Needs <!-- ToC begin/end --> comments for inserting the ToC.">Full MD:</label>
                         
                         <input type="checkbox" id="fullMD" name="fullMD" />
                         
-                        &emsp;
+                        &ensp;
                         
-                        <label for="fullMD" title="Generate/overwrite anchors? (Not needed for GitHub)">Anchors:</label>
+                        <label for="addAnchors" title="Generate/overwrite anchors? (Not needed for GitHub)">Anchors:</label>
                         
-                        <input type="checkbox" id="addAnchors" name="addAnchors" />
+                        <!--<input type="checkbox" id="addAnchors" name="addAnchors" />-->
+                        <select id="addAnchors">
+                            <option value="none" selected>—</option>
+                            <option value="HTML">HTML</option>
+                            <option value="braces">{#…}</option>
+                        </select>
                         
-                        &emsp;
+                        &ensp;
                         
                         <label for="useID" title="Use id= instead of name= for anchors?">Use id:</label>
                         
                         <input type="checkbox" id="useID" name="useID" />
                         
-                        &emsp;
+                        &ensp;
                         
                         <button onclick="doIt(); return false;">TOC it!</button>
                     </td>

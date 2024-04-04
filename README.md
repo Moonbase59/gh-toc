@@ -15,7 +15,7 @@ I fully agree. This fork has lots of bugfixes and additional features:
 - Much better code block support (backticks, tildes, differing number of them).
 - YAML front matter support.
 - Optional output of the full Markdown file, ToC inserted between `<!-- ToC begin -->` and `<!-- ToC end -->` HTML comments, instead of just the ToC. You _can_ insert the ToC multiple times, although I don’t see a use case for that.
-- Optional named anchor generation for each ToC element (not needed for GitHub use).
+- Optional named anchor generation for each ToC element (not needed for GitHub use), HTML or `{#…}` style.
 - Optional use of `id` instead `name` attribute in generated anchors.
 
 **None of your data is transferred to the Internet.** All work happens in your browser, using JavaScript.
@@ -32,7 +32,9 @@ Note _gh-toc_ works with ATX-type headings (`###`). It doesn’t try to parse fo
 
 ## Known problems
 
-_gh-toc_ will "brute-force replace" all text between the ToC start  marker `<!-- ToC begin -->` and the end marker `<!-- ToC end -->` with the new Table of Contents, _even if they are in a code block_. Avoid that for now, or don’t use the _Full MD_ option in this case and insert the ToC manually.
+- _gh-toc_ will "brute-force replace" all text between the ToC start  marker `<!-- ToC begin -->` and the end marker `<!-- ToC end -->` with the new Table of Contents, _even if they are in a code block_. Avoid that for now, or don’t use the _Full MD_ option in this case and insert the ToC manually.
+
+- Selecting _FullMD_ + _Anchor: \{\#…\}_ will overwrite other than anchor definitions within the curly braces, i.e. `{#anchor .red}` → `{#new-anchor}`. Selecting _Anchor: –_ (None) doesn’t modify existing curly brace definitions.
 
 ## The Real Magic
 

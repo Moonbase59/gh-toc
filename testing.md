@@ -100,6 +100,8 @@ You can backlink to your generated [Table of Contents](#toc) anywhere using
 ### Some _emphasized_ text
 ### Some **bold** text
 ### Some ~~strikethrough~ text
+### Anchors {#anchors}
+### <a name="#anchors-1"></a>Anchors
 
 ## More character codes
 ### Apostrophes and such: "a" 'b' “c” ‘d’ »e« ›f‹ „g“ ‚h‘
