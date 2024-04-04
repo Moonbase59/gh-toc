@@ -23,6 +23,7 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
     - [Some `code_with_underscores += a*b`](#some-code_with_underscores--ab)
     - [More `code_bars`](#more-code_bars)
     - [We might have ``double_quoted_code``](#we-might-have-double_quoted_code)
+    - [Or even ``double-quoted with single backticks ` inside!``](#or-even-double-quoted-with-single-backticks--inside)
   - [Underscore special cases](#underscore-special-cases)
     - [Just __ some underlines, or __dunders__](#just-__-some-underlines-or-dunders)
     - [___](#___)
