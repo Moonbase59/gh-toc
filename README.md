@@ -4,7 +4,7 @@ Quickly create Table-of-Content Markdown for GitHub Markdown files.
 
 ## Overview
 
-> I could never find an easy to use, online table-of-content maker for GitHub Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.
+> I could never find an easy to use, online table-of-content maker for GitHub Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.  
 > _— (Words from the [original creator](https://imthenachoman.github.io/nGitHubTOC/))_
 
 I fully agree. This is a fork, with no Google Analytics and some bugfixes.
