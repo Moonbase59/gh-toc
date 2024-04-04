@@ -67,6 +67,8 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex) {
                 /(`(?:`*)?)(.*?)(?:\1)|(\s*)_+([^\s_].+[^\s_])_+(\s*)/gu,
                 "$2$3$4$5"
             );
+            // remove leftover backticks
+            headingAnchor = headingAnchor.replace(/`/gu, "");
             // Now replace remaining blanks with '-'
             headingAnchor = headingAnchor.replace(/ /gu, "-");
           

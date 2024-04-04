@@ -76,6 +76,7 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
 ### Some `code_with_underscores += a*b`
 ### More `code_bars`
 ### We might have ``double_quoted_code``
+### Or even ``double-quoted with single backticks ` inside!``
 
 ## Underscore special cases
 ### Just __ some underlines, or __dunders__
