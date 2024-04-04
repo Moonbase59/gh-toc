@@ -127,6 +127,10 @@ This generates `#heading-3` as expected.
 ##### 3.2.2 Sub-sub-section
 ##### 3.2.3 Sub-sub-section
 
+## ToC
+
+This generates a link `#toc`. Let’s see if it clashes with our standard backlink named `#toc`.
+
 ```
 ## What if this is in a code block?
 ```
