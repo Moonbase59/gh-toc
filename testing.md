@@ -131,9 +131,32 @@ This generates `#heading-3` as expected.
 
 This generates a link `#toc`. Let’s see if it clashes with our standard backlink named `#toc`.
 
+## Code blocks
+
 ```
 ## What if this is in a code block?
 ```
+
+`````
+```
+## Code level 3 inside level 5 block
+```
+`````
+
+````
+```
+## Code level 3 inside level 4 block, no level 3 end
+````
+
+```markdown
+## Code tag with name
+```
+
+~~~~ {#mycode .markdown .numberLines startFrom="100"}
+## fenced code block starting with 4, ending with 6 tildes
+~~~~~~
+
+## Back again from the code blocks
 
 Lots of characters normally _not_ in headings, but they shouldn’t break link generation.
 

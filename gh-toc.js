@@ -1,31 +1,38 @@
-function tocIt(inputMD, minHeading, maxHeading, ignoreLinex)
-{
+function tocIt(inputMD, minHeading, maxHeading, ignoreLinex) {
+
     if(minHeading > maxHeading) return;
 
     inputMDLines = inputMD.split("\n");
     var outputMD = "";
     var anchorTracker = {};
     var codeTagEndExpected = false;
+    var codeTagLevel = 0;
 
-    for(var i = 0; i < inputMDLines.length; ++i)
-    {
+    for(var i = 0; i < inputMDLines.length; ++i) {
         var inputMDLine = inputMDLines[i].trim();
 
-        var codeTag = /^.*(`{3}) ?(.*)?$/.exec(inputMDLine);
-        if(codeTag)
-        {
-            codeTagEndExpected = !codeTagEndExpected;
-            continue;
+        // code tags can have 3 or more backticks or tildes,
+        // highest number is outermost level
+        // ending tag must have at least the same number of backticks/tildes
+        var codeTag = /^[^`~]*([`~]{3,}) ?(.*)?$/.exec(inputMDLine);
+        if(codeTag) {
+            level = codeTag[1].length;  // number of backticks or tildes
+            if (level >= codeTagLevel) {
+                codeTagEndExpected = !codeTagEndExpected;
+                codeTagLevel = level;
+                if (codeTagEndExpected === false) {
+                    codeTagLevel = 0;
+                }
+                continue;
+            }
         }
 
         var match = /^(#+) (.*)$/.exec(inputMDLine);
-        if(!codeTagEndExpected && match)
-        {
+        if(!codeTagEndExpected && match) {
             var headingLevel = match[1].length;
             var headingTitle = match[2].replace(/<.*?>/g, "");
 
-            if(headingLevel < minHeading || headingLevel > maxHeading)
-            {
+            if(headingLevel < minHeading || headingLevel > maxHeading) {
                 continue;
             }
 
@@ -51,8 +58,7 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex)
             headingAnchor = headingAnchor.replace(/ /gu, "-");
           
             // need a loop since result might already been taken
-            while (headingAnchor in anchorTracker)
-            {
+            while (headingAnchor in anchorTracker) {
                 anchorTracker[headingAnchor]++;
                 headingAnchor = headingAnchor + "-" + anchorTracker[headingAnchor];
             }
