@@ -1,3 +1,8 @@
+---
+title: testing.md – Testing edge cases for gh-toc
+date: 2024-04-04
+# A YAML comment that could be mis-interpreted as a H1 heading
+---
 # gh-toc
 
 These are some testing samples for [gh-toc](https://moonbase59.github.io/gh-toc/).

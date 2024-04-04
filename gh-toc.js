@@ -7,15 +7,28 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex) {
     var anchorTracker = {};
     var codeTagEndExpected = false;
     var codeTagLevel = 0;
+    var frontmatterEndExpected = false;
 
     for(var i = 0; i < inputMDLines.length; ++i) {
         var inputMDLine = inputMDLines[i].trim();
+
+        // Front matter starts/ends with triple-dashed lines.
+        // It must start at the beginning of the file.
+        var frontmatterTag = inputMDLine == "---";
+        if (frontmatterTag) {
+            if (i == 0) {
+                frontmatterEndExpected = true;
+            } else {
+                frontmatterEndExpected = false;
+            }
+            continue;
+        }
 
         // code tags can have 3 or more backticks or tildes,
         // highest number is outermost level
         // ending tag must have at least the same number of backticks/tildes
         var codeTag = /^[^`~]*([`~]{3,}) ?(.*)?$/.exec(inputMDLine);
-        if(codeTag) {
+        if (!frontmatterEndExpected && codeTag) {
             level = codeTag[1].length;  // number of backticks or tildes
             if (level >= codeTagLevel) {
                 codeTagEndExpected = !codeTagEndExpected;
@@ -28,7 +41,7 @@ function tocIt(inputMD, minHeading, maxHeading, ignoreLinex) {
         }
 
         var match = /^(#+) (.*)$/.exec(inputMDLine);
-        if(!codeTagEndExpected && match) {
+        if (!frontmatterEndExpected && !codeTagEndExpected && match) {
             var headingLevel = match[1].length;
             var headingTitle = match[2].replace(/<.*?>/g, "");
 
