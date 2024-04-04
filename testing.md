@@ -7,6 +7,7 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
 ## The generated ToC (copy-pasted)
 
 <!-- ToC begin -->
+<a name="toc"></a>
 - [gh-toc](#gh-toc)
   - [The generated ToC (copy-pasted)](#the-generated-toc-copy-pasted)
   - [Foreign characters](#foreign-characters)
@@ -81,6 +82,12 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
 ### _another_in_word_example_
 
 ## Markdown
+
+You can backlink to your generated [Table of Contents](#toc) anywhere using
+```
+[Table of Contents](#toc)
+```
+
 ### Some _emphasized_ text
 ### Some **bold** text
 ### Some ~~strikethrough~ text
