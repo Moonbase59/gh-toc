@@ -38,7 +38,7 @@
             }
             
             input {
-                width: 50px;
+                width: 16px;
             }
         </style>
         <script src="gh-toc.js"></script>
@@ -47,13 +47,16 @@
                 var inputMD = document.querySelector("#inputMD").value;
                 var minHeading = document.querySelector("#minHeading").value;
                 var maxHeading = document.querySelector("#maxHeading").value;
+                var fullMD = document.querySelector("#fullMD").checked;
+                var addAnchors = document.querySelector("#addAnchors").checked;
+                var useID = document.querySelector("#useID").checked;
                 
                 if(minHeading > maxHeading) {
-                    alert("Minimum heading level cannot be greater than maximum heading level")
+                    alert("Minimum heading level cannot be greater than maximum heading level");
                     return;
                 }
                 
-                document.querySelector("#outputMD").value = tocIt(inputMD, minHeading, maxHeading);
+                document.querySelector("#outputMD").value = tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID);
             }
         </script>
     </head>
@@ -62,14 +65,15 @@
         <p>Quickly create Table-of-Content Markdown for GitHub Markdown files. (<a href="https://github.com/moonbase59/gh-toc">Source code</a>)</p>
         <h2>Overview</h2>
         <blockquote>I could never find an easy to use, online table-of-content maker for GitHub Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.<br>— <em>(Words from the <a href="https://imthenachoman.github.io/nGitHubTOC/">original creator</a>)</em></blockquote>
-        <p>I agree. This fork has lots of bugfixes and enhancements:</p>
+        <p>I agree. This fork has lots of bugfixes and additional features:</p>
         <ul>
             <li>Full Unicode support, all international characters.</li>
             <li>Much better code block support (backticks, tildes, differing number of them).</li>
             <li>YAML front matter support.</li>
+            <li>Options galore—hover mouse over checkbox labels for longer description.</li>
         </ul>
         <p>Try the <a href="https://github.com/Moonbase59/gh-toc/blob/master/testing.md?plain=1">testing.md</a> example: <strong>No other online ToC-Generator I could find handled this correctly!</strong></p>
-        <p><strong>None of your data is transferred to the Internet.</strong> All work happens in your browser, using JavaScript.</p>
+        <p><strong>None of your data is transferred to the Internet.</strong> All work happens in your browser, using JavaScript. Use Markdown ATX headings (<code>###</code>).</p>
         <h2>The Real Magic</h2>
         <p>
             <table>
@@ -106,6 +110,25 @@
                             <option value="5">5</option>
                             <option value="6" selected>6</option>
                         </select>
+                        
+                        &emsp;
+                        
+                        <label for="fullMD"
+                            title="Output the full Markdown file? Needs <!-- ToC begin/end --> comments for inserting the ToC.">Full MD:</label>
+                        
+                        <input type="checkbox" id="fullMD" name="fullMD" />
+                        
+                        &emsp;
+                        
+                        <label for="fullMD" title="Generate/overwrite anchors? (Not needed for GitHub)">Anchors:</label>
+                        
+                        <input type="checkbox" id="addAnchors" name="addAnchors" />
+                        
+                        &emsp;
+                        
+                        <label for="useID" title="Use id= instead of name= for anchors?">Use id:</label>
+                        
+                        <input type="checkbox" id="useID" name="useID" />
                         
                         &emsp;
                         
