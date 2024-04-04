@@ -1,6 +1,7 @@
 function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
 
-    console.log(fullMD, addAnchors, useID);
+    // addAnchors can be: "none", "HTML", "braces"
+
     var anchorAttribute = "name";
     if (useID) {
         anchorAttribute = "id";
@@ -47,12 +48,12 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
         }
 
         //var match = /^(#+) (.*)$/.exec(inputMDLine);
-        // breakdown: $1=ATX header, $2=title, $3=lat {} block incl. blank before
         var match = /^(#+) (.*?)( {.*})?$/.exec(inputMDLine);
+        // match: $1=ATX header, $2=title, $3=last {} block incl. blank before
         if (!frontmatterEndExpected && !codeTagEndExpected && match) {
             var headingLevel = match[1].length;
             var headingTitle = match[2].replace(/<.*?>/g, "");
-            var headingAttrib = match[3];
+            var headingAttrib = match[3] || "";
 
             if(headingLevel < minHeading || headingLevel > maxHeading) {
                 continue;
@@ -60,6 +61,10 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
 
             var outputHeadingLevel = headingLevel - minHeading;
           
+            if (addAnchors == "none") {
+                // GitHub ignores appended {#…} in headings and includes that part
+                headingTitle = headingTitle + headingAttrib;
+            }
             // make everything (Unicode-aware) lower case
             var headingAnchor = headingTitle.toLowerCase();
             // remove everything that is NOT a (Unicode) Letter, (Unicode) Number decimal,
@@ -112,14 +117,13 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
     if (fullMD && ["HTML", "braces"].includes(addAnchors)) {
         for (const [k, v] of Object.entries(anchorTracker)) {
             var inputMDLine = inputMDLines[v["line"]];
-            // breakdown: $1=whitespace before, $2=content, $3=whitespace after
             var parts = /^([\s]*)(.*?)([\s]*)$/.exec(inputMDLine);
+            // parts: $1=whitespace before, $2=content, $3=whitespace after
             
             if (addAnchors == "HTML") {
                 // construct ### <a name="name"></a>Heading Title
                 var anchor = '<a ' + anchorAttribute + '="' + k + '"></a>';
                 var outputMDLine =
-                    //parts[1] + "#".repeat(v["level"]) + " " + anchor + v["title"] + v["attrib"] + parts[3];
                     parts[1] + "#".repeat(v["level"]) + " " + anchor + v["title"] + parts[3];
             } else if (addAnchors == "braces") {
                 // construct ### Heading Title {#name}

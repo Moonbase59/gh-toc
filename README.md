@@ -15,8 +15,8 @@ I fully agree. This fork has lots of bugfixes and additional features:
 - Much better code block support (backticks, tildes, differing number of them).
 - YAML front matter support.
 - Optional output of the full Markdown file, ToC inserted between `<!-- ToC begin -->` and `<!-- ToC end -->` HTML comments, instead of just the ToC. You _can_ insert the ToC multiple times, although I don’t see a use case for that.
-- Optional named anchor generation for each ToC element (not needed for GitHub use), HTML or `{#…}` style.
-- Optional use of `id` instead `name` attribute in generated anchors.
+- Optional named anchor generation for each ToC element: `—` for GitHub, `HTML` or `{#…}` for other uses.
+- Optional use of `id` instead of `name` attribute in generated HTML anchors.
 
 **None of your data is transferred to the Internet.** All work happens in your browser, using JavaScript.
 

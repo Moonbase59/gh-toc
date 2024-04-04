@@ -75,72 +75,70 @@
         <p>Try the <a href="https://github.com/Moonbase59/gh-toc/blob/master/testing.md?plain=1">testing.md</a> example: <strong>No other online ToC-Generator I could find handled this correctly!</strong></p>
         <p><strong>None of your data is transferred to the Internet.</strong> All work happens in your browser, using JavaScript. Use Markdown ATX headings (<code>###</code>).</p>
         <h2>The Real Magic</h2>
-        <p>
-            <table>
-                <tr>
-                    <th>Markdown input</th>
-                    <th>Table of Content output</th>
-                </tr>
-                <tr>
-                    <td><textarea id="inputMD"></textarea></td>
-                    <td><textarea id="outputMD"></textarea></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <label for="minHeading">Minimum heading level:</label>
-                        
-                        <select id="minHeading">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
-                        
-                        &ensp;
-                        
-                        <label for="maxHeading">Maximum heading level:</label>
-                        
-                        <select id="maxHeading">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6" selected>6</option>
-                        </select>
-                        
-                        &ensp;
-                        
-                        <label for="fullMD"
-                            title="Output the full Markdown file? Needs <!-- ToC begin/end --> comments for inserting the ToC.">Full MD:</label>
-                        
-                        <input type="checkbox" id="fullMD" name="fullMD" />
-                        
-                        &ensp;
-                        
-                        <label for="addAnchors" title="Generate/overwrite anchors? (Not needed for GitHub)">Anchors:</label>
-                        
-                        <!--<input type="checkbox" id="addAnchors" name="addAnchors" />-->
-                        <select id="addAnchors">
-                            <option value="none" selected>—</option>
-                            <option value="HTML">HTML</option>
-                            <option value="braces">{#…}</option>
-                        </select>
-                        
-                        &ensp;
-                        
-                        <label for="useID" title="Use id= instead of name= for anchors?">Use id:</label>
-                        
-                        <input type="checkbox" id="useID" name="useID" />
-                        
-                        &ensp;
-                        
-                        <button onclick="doIt(); return false;">TOC it!</button>
-                    </td>
-                </tr>
-            </table>
-        </p>
+        <table>
+            <tr>
+                <th>Markdown input</th>
+                <th>Table of Content output</th>
+            </tr>
+            <tr>
+                <td><textarea id="inputMD"></textarea></td>
+                <td><textarea id="outputMD"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="minHeading">Minimum heading level:</label>
+                    
+                    <select id="minHeading">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    
+                    &ensp;
+                    
+                    <label for="maxHeading">Maximum heading level:</label>
+                    
+                    <select id="maxHeading">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6" selected>6</option>
+                    </select>
+                    
+                    &ensp;
+                    
+                    <label for="fullMD"
+                        title="Output the full Markdown file? Needs <!-- ToC begin/end --> comments for inserting the ToC.">Full MD:</label>
+                    
+                    <input type="checkbox" id="fullMD" name="fullMD" />
+                    
+                    &ensp;
+                    
+                    <label for="addAnchors" title="Generate/overwrite anchors? (— for GitHub, HTML or {#…} for other uses)">Anchors:</label>
+                    
+                    <!--<input type="checkbox" id="addAnchors" name="addAnchors" />-->
+                    <select id="addAnchors">
+                        <option value="none" selected>—</option>
+                        <option value="HTML">HTML</option>
+                        <option value="braces">{#…}</option>
+                    </select>
+                    
+                    &ensp;
+                    
+                    <label for="useID" title="Use id= instead of name= for anchors?">Use id:</label>
+                    
+                    <input type="checkbox" id="useID" name="useID" />
+                    
+                    &ensp;
+                    
+                    <button onclick="doIt(); return false;">TOC it!</button>
+                </td>
+            </tr>
+        </table>
     </body>
 </html>
