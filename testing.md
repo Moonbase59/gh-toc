@@ -38,6 +38,8 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
     - [Some _emphasized_ text](#some-emphasized-text)
     - [Some **bold** text](#some-bold-text)
     - [Some ~~strikethrough~ text](#some-strikethrough-text)
+    - [Anchors {#anchors}](#anchors-anchors)
+    - [Anchors](#anchors)
   - [More character codes](#more-character-codes)
     - [Apostrophes and such: "a" 'b' “c” ‘d’ »e« ›f‹ „g“ ‚h‘](#apostrophes-and-such-a-b-c-d-e-f-g-h)
     - [(Parentheses), [brackets] and {curlies}](#parentheses-brackets-and-curlies)
