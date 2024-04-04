@@ -1,3 +1,7 @@
+// gh-toc.js
+// Copyright (c) 2024 Matthias C. Hormann a.k.a. Moonbase59
+// 2024-04-04
+
 function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
 
     // addAnchors can be: "none", "HTML", "braces"
