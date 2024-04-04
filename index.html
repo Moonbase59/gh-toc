@@ -1,40 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="utf-8" />
         <title>gh-toc</title>
+        <meta name="description" content="Quickly create Table-of-Content Markdown for GitHub Markdown files." />
+        <meta property="og:url" content="https://moonbase59.github.io/gh-toc/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="gh-toc" />
+        <meta property="og:description" content="Quickly create Table-of-Content Markdown for GitHub Markdown files." />
+        <meta property="og:image" content="https://moonbase59.github.io/gh-toc/gh-toc.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1280" />
+        <meta property="og:image:height" content="640" />
+        <meta property="og:author" content="Moonbase59" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="gh-toc" />
+        <meta name="twitter:description" content="Quickly create Table-of-Content Markdown for GitHub Markdown files." />
+        <meta name="twitter:image" content="https://moonbase59.github.io/gh-toc/gh-toc.png" />
+        <meta property="article:published_time" content="2024-04-04T10:04:31+02:00" />
+        <meta property="article:modified_time" content="2024-04-04T10:04:31+02:00" />
+        <meta property="article:author" content="Moonbase59" />
+
         <style>
-            table
-            {
+            table {
                 width: 100%;
             }
             
-            td
-            {
+            td {
                 padding: 5px;
             }
             
-            textarea
-            {
+            textarea {
                 width: 100%;
                 height: 200px;
             }
             
-            input
-            {
+            input {
                 width: 50px;
             }
         </style>
         <script src="gh-toc.js"></script>
         <script>
-            function doIt()
-            {
+            function doIt() {
                 var inputMD = document.querySelector("#inputMD").value;
                 var minHeading = document.querySelector("#minHeading").value;
                 var maxHeading = document.querySelector("#maxHeading").value;
                 
-                if(minHeading > maxHeading)
-                {
-                    alert("minimum heading level cannot be greater than maximum heading level")
+                if(minHeading > maxHeading) {
+                    alert("Minimum heading level cannot be greater than maximum heading level")
                     return;
                 }
                 
@@ -47,12 +60,13 @@
         <p>Quickly create Table-of-Content Markdown for GitHub Markdown files. (<a href="https://github.com/moonbase59/gh-toc">Source code</a>)</p>
         <h2>Overview</h2>
         <blockquote>I could never find an easy to use, online table-of-content maker for GitHub Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.<br>— <em>(Words from the <a href="https://imthenachoman.github.io/nGitHubTOC/">original creator</a>)</em></blockquote>
-        <p>I fully agree. This fork has lots of bugfixes and enhancements. Try the <a href="https://github.com/Moonbase59/gh-toc/blob/master/testing.md?plain=1">testing.md</a> example!</p>
+        <p>I agree. This fork has lots of bugfixes and enhancements:</p>
         <ul>
             <li>Full Unicode support, all international characters.</li>
             <li>Much better code block support (backticks, tildes, differing number of them).</li>
             <li>YAML front matter support.</li>
         </ul>
+        <p>Try the <a href="https://github.com/Moonbase59/gh-toc/blob/master/testing.md?plain=1">testing.md</a> example: <strong>No other online ToC-Generator I could find handled this correctly!</strong></p>
         <p><strong>None of your data is transferred to the Internet.</strong> All work happens in your browser, using JavaScript.</p>
         <h2>The Real Magic</h2>
         <p>

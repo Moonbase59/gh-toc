@@ -19,6 +19,8 @@ I fully agree. This fork has lots of bugfixes and enhancements:
 
 I did lots of testing, rewrote the link generation and added extra functionality, to be as compatbile with GitHub as possible. It works great, even for difficult cases.
 
+**No other online ToC-Generator I could find handled all the test cases below correctly!**
+
 ## Test file
 
 [testing.md](testing.md) is a sample Markdown file with many test cases. Copy its contents into the input box of gh-toc to see what gets generated.
