@@ -174,8 +174,8 @@ This generates `#heading-3` as expected.
    ## 3-space indented code block
    ```
    
-    ``` not a code block but still a code block (4 spaces)
-    ## 4-space indent - treat as code
+    ``` not a fenced code block but still a code block (4 spaces)
+    ## 4-space indent—treat as code
     ```
 
     ## This is an indented code block (4+ spaces)
@@ -189,7 +189,7 @@ This generates `#heading-3` as expected.
  ### 1 space
   ### 2 spaces
    ### 3 spaces
-    ### 4 spaces, no empty line before (consider as text)
+    ### 4 spaces, no empty line before (consider as text or code)
     
     ### 4 spaces, empty line before (consider as code)
 
