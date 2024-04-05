@@ -43,10 +43,10 @@ Note _gh-toc_ works with ATX-type headings (`###`). It doesn’t try to parse fo
 3. Click `TOC it!` and watch the magic.
 4. Copy-paste the contents of the _right_ input box into a text editor and save as `testing-html-anchors.md`.
 5. Convert to HTML using [_Pandoc_](https://pandoc.org/):
-  ```bash
-  pandoc -f markdown-auto_identifiers -t html testing-html-anchors.md -o testing-html-anchors.html
-  ```
-6. Open [`testing-html-anchors.html`](testing-html-anchors.html) in your favourite browser and test the links.
+   ```bash
+   pandoc -f markdown-auto_identifiers -t html testing-html-anchors.md -o testing-html-anchors.html
+   ```
+6. Open [`testing-html-anchors.html`](https://moonbase59.github.io/gh-toc/testing-html-anchors.html) in your favourite browser and test the links.
 
 **Voilà. Enjoy!**
 
