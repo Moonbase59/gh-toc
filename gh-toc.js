@@ -21,6 +21,7 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
     var frontmatterEndExpected = false;
     var lastLineBlank = false;
     var indentedCodeEndExpected = false;
+    var tocTracker = {};
 
     for(var line = 0; line < inputMDLines.length; ++line) {
         //var inputMDLine = inputMDLines[line].trim();
@@ -42,13 +43,11 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
             continue;
         }
 
-        console.log(inputMDLine);
         // Skip blank lines.
         // Blank lines can start indented code, so remember.
         var blankLine = /^(\s*)$/.exec(inputMDLine);
         if (blankLine) {
             lastLineBlank = true;
-            console.log("blank, skipping; lastLineBlank now", lastLineBlank);
             continue;
         }
         
@@ -60,7 +59,6 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
                 indentedCodeEndExpected = true;
             }
             if (indentedCodeEndExpected) {
-                console.log("Codeline, skipping");
                 continue;
             }
         } else {
@@ -68,7 +66,6 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
         }
 
         lastLineBlank = false;
-        console.log("Normal line, lastLineBlank now", lastLineBlank);
         
         // Code tags can have 3 or more backticks or tildes,
         // highest number is outermost level.
