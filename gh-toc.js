@@ -21,7 +21,8 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
     var frontmatterEndExpected = false;
     var lastLineBlank = false;
     var indentedCodeEndExpected = false;
-    var tocTracker = {};
+    var tocTracker = [];
+    var tocNumber = 0;
 
     for(var line = 0; line < inputMDLines.length; ++line) {
         //var inputMDLine = inputMDLines[line].trim();
@@ -84,6 +85,31 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
             }
         }
 
+        // save position of <!-- ToC begin --> and <!-- ToC end --> lines
+        // This tries to avoid sequence errors and single begin/end comments.
+        // For convenience, it now also supports a single [TOC]
+        var tocComment = /^<!--\s*ToC (begin|end)\s*-->$|^\[(TOC)\]$/gumis.exec(inputMDLine);
+        if (tocComment) {
+            var r = "";
+            if (tocComment[1] === undefined) {
+                r = tocComment[2].toLowerCase();
+            }
+            else {
+                r = tocComment[1].toLowerCase();
+            }
+            if (r == "begin" || r == "toc") {
+                tocNumber++;
+                tocTracker[tocNumber] = {"begin": line, "end": -1};
+                // [TOC] is single, set end line for replace
+                if (r == "toc") {
+                    tocTracker[tocNumber]["end"] = line;
+                }
+            } else if (tocNumber > 0 && tocTracker[tocNumber]["end"] < 0){
+                tocTracker[tocNumber]["end"] = line;
+            }
+            continue;
+        }
+
         // Now find and handle ATX headings
         var match = /^ {0,3}(#+) (.*?)( {.*})?$/.exec(inputMDLine);
         // match: $1=ATX header, $2=title, $3=last {} block incl. blank before
@@ -140,8 +166,6 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
         }
     }
 
-    //console.log(anchorTracker);
-    
     // build ToC
     toc =
         "<!-- ToC begin -->\n"
@@ -178,21 +202,36 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
     //   <!-- ToC begin -->
     //   ...
     //   <!-- ToC end -->
-    // These two lines must be exactly as shown!
-    // FIXME: Will also replace if "ToC begin/end" are in code blocks.
+    // These two lines should be exactly as shown.
+    // This works safely now, ignoring wrong ToC begin/end sequence & missing ones.
     if (fullMD) {
-        const re = /<!--\s*ToC begin\s*-->.*?<!--\s*ToC end\s*-->/gmusi;
-        var tocReplace = re.test(inputMD);
-        if (tocReplace) {
-            outputMD = inputMD.replace(re, toc);
-        } else {
-            outputMD = "";
-            alert("Cannot insert Table of Contents, missing lines\n"
+        var tocLines = toc.split("\n");
+        var outputMDLines = inputMDLines;
+        var lineOffset = 0;
+        var changed = false;
+        
+        function insertToc(v, i, arr) {
+            // end=-1 signifies a ToC begin without end,
+            // and we can’t have a ToC end on the first line.
+            if (v["end"] > 0) {
+                toRemove = v["end"] - v["begin"] + 1;
+                // beware: splice modifies the array
+                removed = outputMDLines.splice(
+                    v["begin"] + lineOffset, toRemove, ...tocLines);
+                lineOffset += -removed.length + tocLines.length;
+                changed = true;
+            }
+        }
+        
+        tocTracker.forEach(insertToc);
+
+        outputMD = outputMDLines.join('\n');
+
+        if (!changed) {
+            alert("Cannot insert Table of Contents, missing one or both of\n"
                 + "<!-- ToC begin -->\n<!-- ToC end -->\n"
                 + "These should be exactly as shown.");
         }
-    } else {
-        outputMD = toc + '\n';
     }
 
     return outputMD;
