@@ -212,8 +212,7 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
         
         function insertToc(v, i, arr) {
             // end=-1 signifies a ToC begin without end,
-            // and we can’t have a ToC end on the first line.
-            if (v["end"] > 0) {
+            if (v["end"] > -1) {
                 toRemove = v["end"] - v["begin"] + 1;
                 // beware: splice modifies the array
                 removed = outputMDLines.splice(
