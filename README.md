@@ -31,6 +31,25 @@ Note _gh-toc_ works with ATX-type headings (`###`). It doesn’t try to parse fo
 
 [testing.md](testing.md) is a sample Markdown file with many test cases. Copy its contents into the input box of gh-toc to see what gets generated.
 
+## Test conversion to HTML, using auto-generated links
+
+1. Copy-paste the contents of `testing.md` into the _left_ input box of [gh-toc](https://moonbase59.github.io/gh-toc/).
+2. Select
+   - Minimum heading level: 1
+   - Maximum heading level: 6
+   - Full MD: ☑
+   - Anchors: HTML
+   - Use id: ☐
+3. Click `TOC it!` and watch the magic.
+4. Copy-paste the contents of the _right_ input box into a text editor and save as `testing-html-anchors.md`.
+5. Convert to HTML using [_Pandoc_](https://pandoc.org/):
+  ```bash
+  pandoc -f markdown-auto_identifiers -t html testing-html-anchors.md -o testing-html-anchors.html
+  ```
+6. Open [`testing-html-anchors.html`](testing-html-anchors.html) in your favourite browser and test the links.
+
+**Voilà. Enjoy!**
+
 ## Known problems
 
 - ~~_gh-toc_ will "brute-force replace" all text between the ToC start  marker `<!-- ToC begin -->` and the end marker `<!-- ToC end -->` with the new Table of Contents, _even if they are in a code block_. Avoid that for now, or don’t use the _Full MD_ option in this case and insert the ToC manually.~~
