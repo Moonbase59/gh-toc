@@ -31,9 +31,11 @@ Note _gh-toc_ works with ATX-type headings (`###`). It doesn’t try to parse fo
 
 [testing.md](testing.md) is a sample Markdown file with many test cases. Copy its contents into the input box of gh-toc to see what gets generated.
 
-## Test conversion to HTML, using auto-generated HTML links
+## Conversion to HTML, using auto-generated HTML anchors
 
-This will generate HTML links of the form
+This syntax is compatible with almost anything that generates HTML from Markdown, but the HTML is slightly harder to read. You can select if you want `name=` (default) or `id=` HTML anchors generated.
+
+It will generate HTML anchors of the form
 
 ```markdown
 # <a name="gh-toc"></a>gh-toc
@@ -61,9 +63,11 @@ in the Markdown file, which Pandoc then converts to this HTML:
 
 **Voilà. Enjoy!**
 
-## Test conversion to HTML, using auto-generated {#…} links
+## Conversion to HTML, using auto-generated {#…} anchors
 
-This will generate HTML links of the form
+This syntax is compatible with [_Pandoc_](https://pandoc.org/) and [_PHP Markdown Extra_](https://michelf.ca/projects/php-markdown/extra/), for example.
+
+It will generate header attributes of the form
 
 ```markdown
 # gh-toc {#gh-toc}
