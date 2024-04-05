@@ -229,7 +229,8 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
         if (!changed) {
             alert("Cannot insert Table of Contents, missing one or both of\n"
                 + "<!-- ToC begin -->\n<!-- ToC end -->\n"
-                + "These should be exactly as shown.");
+                + "These should be exactly as shown.\n"
+                + "You can also use a single [TOC] instead.");
         }
     }
 
