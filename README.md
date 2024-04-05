@@ -31,7 +31,18 @@ Note _gh-toc_ works with ATX-type headings (`###`). It doesn’t try to parse fo
 
 [testing.md](testing.md) is a sample Markdown file with many test cases. Copy its contents into the input box of gh-toc to see what gets generated.
 
-## Test conversion to HTML, using auto-generated links
+## Test conversion to HTML, using auto-generated HTML links
+
+This will generate HTML links of the form
+
+```markdown
+# <a name="gh-toc"></a>gh-toc
+```
+in the Markdown file, which Pandoc then converts to this HTML:
+
+```html
+<h1><a name="gh-toc"></a>gh-toc</h1>
+```
 
 1. Copy-paste the contents of `testing.md` into the _left_ input box of [gh-toc](https://moonbase59.github.io/gh-toc/).
 2. Select
@@ -49,6 +60,36 @@ Note _gh-toc_ works with ATX-type headings (`###`). It doesn’t try to parse fo
 6. Open [`testing-html-anchors.html`](https://moonbase59.github.io/gh-toc/testing-html-anchors.html) in your favourite browser and test the links.
 
 **Voilà. Enjoy!**
+
+## Test conversion to HTML, using auto-generated {#…} links
+
+This will generate HTML links of the form
+
+```markdown
+# gh-toc {#gh-toc}
+```
+in the Markdown file, which Pandoc then converts to this HTML:
+
+```html
+<h1 id="gh-toc">gh-toc</h1>
+```
+
+1. Copy-paste the contents of `testing.md` into the _left_ input box of [gh-toc](https://moonbase59.github.io/gh-toc/).
+2. Select
+   - Minimum heading level: 1
+   - Maximum heading level: 6
+   - Full MD: ☑
+   - Anchors: {#…}
+   - Use id: ☐
+3. Click `TOC it!` and watch the magic.
+4. Copy-paste the contents of the _right_ input box into a text editor and save as `testing-curly-anchors.md`.
+5. Convert to HTML using [_Pandoc_](https://pandoc.org/):
+   ```bash
+   pandoc -f markdown -t html testing-curly-anchors.md -o testing-curly-anchors.html
+   ```
+6. Open [`testing-curly-anchors.html`](https://moonbase59.github.io/gh-toc/testing-curly-anchors.html) in your favourite browser and test the links.
+
+**Voilà again!**
 
 ## Known problems
 
