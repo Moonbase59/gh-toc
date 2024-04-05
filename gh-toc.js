@@ -233,6 +233,8 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
                 + "These should be exactly as shown.\n"
                 + "You can also use a single [TOC] instead.");
         }
+    } else {
+        outputMD = toc + '\n';
     }
 
     return outputMD;
