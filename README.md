@@ -12,7 +12,7 @@ I fully agree. This fork has lots of bugfixes and additional features:
 - Full Unicode support, all international characters.
 - Better handling of (hopefully) all underscore cases.
 - Correct handling of ``code with backticks ` inside``.
-- Much better code block support (backticks, tildes, differing number of them).
+- Much better code block support (indented, backticks, tildes, differing number of them).
 - YAML front matter support.
 - Optional output of the full Markdown file, ToC inserted between `<!-- ToC begin -->` and `<!-- ToC end -->` HTML comments, instead of just the ToC. You _can_ insert the ToC multiple times, although I don’t see a use case for that.
 - Optional named anchor generation for each ToC element: `—` for GitHub, `HTML` or `{#…}` for other uses.

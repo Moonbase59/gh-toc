@@ -1,6 +1,6 @@
 // gh-toc.js
 // Copyright (c) 2024 Matthias C. Hormann a.k.a. Moonbase59
-// 2024-04-04
+// 2024-04-05
 
 function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
 
@@ -19,9 +19,12 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
     var codeTagEndExpected = false;
     var codeTagLevel = 0;
     var frontmatterEndExpected = false;
+    var lastLineBlank = false;
+    var indentedCodeEndExpected = false;
 
     for(var line = 0; line < inputMDLines.length; ++line) {
-        var inputMDLine = inputMDLines[line].trim();
+        //var inputMDLine = inputMDLines[line].trim();
+        var inputMDLine = inputMDLines[line];
 
         // Front matter starts/ends with triple-dashed lines.
         // It must start at the beginning of the file.
@@ -34,12 +37,45 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
             }
             continue;
         }
+        // skip all front matter
+        if (frontmatterEndExpected) {
+            continue;
+        }
 
-        // code tags can have 3 or more backticks or tildes,
-        // highest number is outermost level
-        // ending tag must have at least the same number of backticks/tildes
-        var codeTag = /^[^`~]*([`~]{3,}) ?(.*)?$/.exec(inputMDLine);
-        if (!frontmatterEndExpected && codeTag) {
+        console.log(inputMDLine);
+        // Skip blank lines.
+        // Blank lines can start indented code, so remember.
+        var blankLine = /^(\s*)$/.exec(inputMDLine);
+        if (blankLine) {
+            lastLineBlank = true;
+            console.log("blank, skipping; lastLineBlank now", lastLineBlank);
+            continue;
+        }
+        
+        // Skip code lines. They start with 4+ spaces,
+        // and must be preceded by a blank line.
+        var codeLine = /^ {4,}.*$/gm.exec(inputMDLine);
+        if (codeLine) {
+            if (lastLineBlank) {
+                indentedCodeEndExpected = true;
+            }
+            if (indentedCodeEndExpected) {
+                console.log("Codeline, skipping");
+                continue;
+            }
+        } else {
+            indentedCodeEndExpected = false;
+        }
+
+        lastLineBlank = false;
+        console.log("Normal line, lastLineBlank now", lastLineBlank);
+        
+        // Code tags can have 3 or more backticks or tildes,
+        // highest number is outermost level.
+        // They can be preceded by 0–3 spaces.
+        // Ending tag must have at least the same number of backticks/tildes.
+        var codeTag = /^ {0,3}([`~]{3,}) ?(.*)?$/.exec(inputMDLine);
+        if (codeTag) {
             level = codeTag[1].length;  // number of backticks or tildes
             if (level >= codeTagLevel) {
                 codeTagEndExpected = !codeTagEndExpected;
@@ -51,10 +87,10 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
             }
         }
 
-        //var match = /^(#+) (.*)$/.exec(inputMDLine);
-        var match = /^(#+) (.*?)( {.*})?$/.exec(inputMDLine);
+        // Now find and handle ATX headings
+        var match = /^ {0,3}(#+) (.*?)( {.*})?$/.exec(inputMDLine);
         // match: $1=ATX header, $2=title, $3=last {} block incl. blank before
-        if (!frontmatterEndExpected && !codeTagEndExpected && match) {
+        if (!codeTagEndExpected && match) {
             var headingLevel = match[1].length;
             var headingTitle = match[2].replace(/<.*?>/g, "");
             var headingAttrib = match[3] || "";
