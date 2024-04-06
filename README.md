@@ -120,6 +120,10 @@ Also try the other options, like auto-generated backlinks to ↑Top or ↑ToC ne
 
 ![screenshot-fullMD-curly-bl](screenshot-fullMD-curly-bl.png)
 
+**Warning if ToC cannot be inserted into full Markdown:**
+
+![screenshot-warning](screenshot-warning.png)
+
 ## Known problems
 
 - ~~_gh-toc_ will "brute-force replace" all text between the ToC start  marker `<!-- ToC begin -->` and the end marker `<!-- ToC end -->` with the new Table of Contents, _even if they are in a code block_. Avoid that for now, or don’t use the _Full MD_ option in this case and insert the ToC manually.~~
