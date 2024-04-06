@@ -162,7 +162,7 @@ Looking around, I liked [IMTheNachoMan’s nGitHubTOC](https://imthenachoman.git
 
 So I decided to _fork_ the project and fix some bugs… **And the story began.**
 
-I looked at the code and tried to reverse-engineer how GitHub generate their anchors (which work really well and have great Unicode support). After setting up test cases, from my own documents, and then some more, I found the original structure of the program good, but it needed intensive polishing-up to handle lots of Markdown quirks and special cases.
+I looked at the code and tried to reverse-engineer how GitHub generate their anchors (which work really well and have great Unicode support). After setting up test cases, from my own documents, and then some more, I found the original structure of the program to be good, but it needed intensive polishing-up to handle lots of Markdown quirks and special cases.
 
 You can look up my [commits](https://github.com/Moonbase59/gh-toc/commits/master/) to follow what I did, if you like. It took a few days until it really did what I wanted.
 
@@ -174,11 +174,11 @@ Some people in various forums had hot discussions about whether to use `name` or
 
 Talking _anchors_, **why not include an automatic anchor for the ToC** (because I always forgot to). While we’re at it, think of people wanting to **go to the Top** of the document, too. (Auto-generated when you use _BL: ⇧Top_.)
 
-**Not everything is GitHub.** So let’s _use_ the GitHub anchors and find a way to include anchors _on the actual headings_ when _not_ using GitHub (which does it automatically when previewing Markdown files). It actually took a while, and lots of reading and testing, to find a way that would work "everywhere", from GitHub to Pandoc-generated HTML, because Markdown doesn’t support it natively. Fortunately it _does_ support using HTML code, so the most compatible way could be found. **_Anchor_ was created.** You can switch between no anchors, HTML, and the curly bracket notation.
+**Not everything is GitHub.** So let’s _use_ the GitHub anchors and find a way to include anchors _on the actual headings_ when _not_ using GitHub (they do it automatically when previewing Markdown files). It actually took a while, and lots of reading and testing, to find a way that would work "everywhere", from GitHub to Pandoc-generated HTML, because Markdown doesn’t support it natively. Fortunately it _does_ support using HTML code, so the most compatible way could be found. **_Anchor_ was created.** You can switch between no anchors, HTML, and the curly bracket notation.
 
 Now what **frustrates** me and others most when reading my ultralong READMEs? Right! **Not being able to jump back to the Table of Contents!** We’re creating anchors anyway, so **why not add a backlink feature?** Now this should work with minimal or no effort, and both on GitHub and files that are later post-processed into HTML. It should be **unobtrusive**, like the little up-arrow many web pages show nowadays to go to `⇧Top`. Oh, and **stylable using CSS**. And hey, why not let me choose between **⇧Top** and **⇧Toc** jumping? What I eventually liked best was **a little stylable up-arrow at the right end of each heading**, technically _inside_ the heading. And of course the **_BL_** (backlink) selection.
 
-I’m _so_ happy that I can copy-paste my README into _gh-toc_ now, select options, and out comes a readily-usable, linked and backlinked file, you wouldn’t believe it!
+I’m _so_ awfully happy. I can now copy-paste my README into _gh-toc_, select options, and out comes a readily-usable, linked and backlinked file that _works_. On GitHub and elsewhere.
 
 Oops. Generated all this nice anchor and backlink stuff, uploaded my README, and now need to change it and output it _without_ anchors and backlinks. And _gh-toc_ would _leave the old stuff all in!_ Okay, next step: **Auto-cleanup of artifacts left over from previous runs!** This works even on headings _you don’t touch this time._ Let’s say you output heading levels 1–6 last time, generating anchors and backlinks for them, and now you only want to output levels 2–6. Normally, _gh-toc_ will only touch as few of your Markdown code lines as possible, but in this case it makes sense to also remove the now-obsolete level 1 anchors & backlinks from the previous run.
 
