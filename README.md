@@ -2,7 +2,7 @@
 
 Quickly create Table-of-Content Markdown for GitHub Markdown files.
 
-![gh-toc.png](gh-toc.png)
+![gh-toc-no-border.png](gh-toc-no-border.png)
 
 ## <a name="table-of-contents-made-with-gh-toc"></a>Table of Contents _(made with gh-toc)_ <a href="#toc" class="goToc">↑</a>
 
