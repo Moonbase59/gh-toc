@@ -4,24 +4,23 @@ Quickly create Table-of-Content Markdown for GitHub Markdown files.
 
 ## Overview
 
-> I could never find an easy to use, online table-of-content maker for GitHub Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.  
-> _— (Words from the [original creator](https://imthenachoman.github.io/nGitHubTOC/))_
+> I could never find a _**do-it-all**_, easy to use, online Table-of-Content maker for GitHub (and other) Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary. 
 
-I fully agree. This fork has lots of bugfixes and additional features:
+Indeed. This [fork](https://imthenachoman.github.io/nGitHubTOC/) has bugfixes and lots of _additional features:_
 
 - Full Unicode support, all international characters.
 - Better handling of (hopefully) all underscore cases.
 - Correct handling of ``code with backticks ` inside``.
-- Much better code block support (indented, backticks, tildes, differing number of them).
-- YAML front matter support.
-- Optional output of the full Markdown file, ToC inserted between `<!-- ToC begin -->` and `<!-- ToC end -->` HTML comments, instead of just the ToC. You _can_ insert the ToC multiple times, although I don’t see a use case for that.
-  **Now also supports a single `[TOC]`, for convenience.**
-- Optional named anchor generation for each ToC element: `—` for GitHub, `HTML` or `{#…}` for other uses.
+- Much better code block support (indented, backticks, tildes, different number of backticks/tildes).
+- YAML/Jekyll/LaTeX front matter support.
+- Optional output of the full Markdown file instead of just the ToC. ToC inserted between `<!-- ToC begin -->` and `<!-- ToC end -->` HTML comments, or at `[TOP]`. You _can_ insert the ToC multiple times, although I don’t see a use case for that.
+- GitHub, HTML and [Pandoc](https://pandoc.org/)/[PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/)-compatible anchor generation for easy navigation.
+- Optional **backlink** generation, to either Top or Table of Contents.
 - Optional use of `id` instead of `name` attribute in generated HTML anchors.
 
 **None of your data is transferred to the Internet.** All work happens in your browser, using JavaScript.
 
-I did lots of testing, rewrote the link generation and added extra functionality, to be as compatbile with GitHub as possible. And then some. It works great, even for difficult cases.
+I did lots of testing, rewrote the link generation and added extra functionality, to be as compatbile with GitHub (and others) as possible. And then some. It works great, even for difficult cases.
 
 Note _gh-toc_ works with ATX-type headings (`###`). It doesn’t try to parse for Setext (`===`/`---`) or HTML (`<h3>`) headings.
 
@@ -94,6 +93,10 @@ in the Markdown file, which Pandoc then converts to this HTML:
 6. Open [`testing-curly-anchors.html`](https://moonbase59.github.io/gh-toc/testing-curly-anchors.html) in your favourite browser and test the links.
 
 **Voilà again!**
+
+## More features
+
+Also try the other options, like auto-generated backlinks to Top or ToC next to each heading! Backlinks use CSS classes `goTop` and `goToc`, so you can even _style_ them!
 
 ## Known problems
 

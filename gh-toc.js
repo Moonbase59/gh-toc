@@ -1,10 +1,18 @@
 // gh-toc.js
 // Copyright (c) 2024 Matthias C. Hormann a.k.a. Moonbase59
-// 2024-04-05
+// 2024-04-06
 
-function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
+"use strict";
+
+function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, addBL, useID) {
 
     // addAnchors can be: "none", "HTML", "braces"
+    // addBL (backlink) can be: "none", "toc", "top"
+
+    // These backlinks can be added to headings; the "blank" is U+2002, an &ensp;
+    var goToc = ' <a href="#toc" class="goToc">↑</a>';
+    var goTop = ' <a href="#top" class="goTop">↑</a>';
+    var firstMDLine = -1;  // no first real MD line found yet
 
     var anchorAttribute = "name";
     if (useID) {
@@ -13,7 +21,7 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
 
     if(minHeading > maxHeading) return;
 
-    inputMDLines = inputMD.split("\n");
+    var inputMDLines = inputMD.split("\n");
     var outputMD = "";
     var anchorTracker = {};
     var codeTagEndExpected = false;
@@ -42,6 +50,11 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
         // skip all front matter
         if (frontmatterEndExpected) {
             continue;
+        }
+        
+        // remember first Markdown line after front matter, for "goTop"
+        if (firstMDLine < 0) {
+            firstMDLine = line;
         }
 
         // Skip blank lines.
@@ -74,7 +87,7 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
         // Ending tag must have at least the same number of backticks/tildes.
         var codeTag = /^ {0,3}([`~]{3,}) ?(.*)?$/.exec(inputMDLine);
         if (codeTag) {
-            level = codeTag[1].length;  // number of backticks or tildes
+            var level = codeTag[1].length;  // number of backticks or tildes
             if (level >= codeTagLevel) {
                 codeTagEndExpected = !codeTagEndExpected;
                 codeTagLevel = level;
@@ -167,7 +180,7 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
     }
 
     // build ToC
-    toc =
+    var toc =
         "<!-- ToC begin -->\n"
         + '<a ' + anchorAttribute + '="toc"></a>\n'  // Backlink to ToC anchor
         + '\n'  // list must have a blank line before
@@ -182,21 +195,36 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
             var parts = /^([\s]*)(.*?)([\s]*)$/.exec(inputMDLine);
             // parts: $1=whitespace before, $2=content, $3=whitespace after
             
+            // add backlinks
+            function backlink() {
+                var bl = "";
+                switch (addBL) {
+                    case 'toc':
+                        bl = goToc;
+                        break;
+                    case 'top':
+                        bl = goTop;
+                        break;
+                    default:
+                        break;
+                }
+                return bl;
+            }
+
             if (addAnchors == "HTML") {
                 // construct ### <a name="name"></a>Heading Title
                 var anchor = '<a ' + anchorAttribute + '="' + k + '"></a>';
                 var outputMDLine =
-                    parts[1] + "#".repeat(v["level"]) + " " + anchor + v["title"] + parts[3];
+                    parts[1] + "#".repeat(v["level"]) + " " + anchor + v["title"] + backlink() + parts[3];
             } else if (addAnchors == "braces") {
                 // construct ### Heading Title {#name}
                 var anchor = ' {#' + k + '}';
                 var outputMDLine =
-                    parts[1] + "#".repeat(v["level"]) + " " + v["title"] + anchor + parts[3];
+                    parts[1] + "#".repeat(v["level"]) + " " + v["title"] + backlink() + anchor + parts[3];
             }
-
             inputMDLines[v["line"]] = outputMDLine;
         }
-        inputMD = inputMDLines.join('\n');
+        //inputMD = inputMDLines.join('\n');
     }
 
     // if full Markdown requested, try to add ToC between
@@ -214,16 +242,22 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
         function insertToc(v, i, arr) {
             // end=-1 signifies a ToC begin without end,
             if (v["end"] > -1) {
-                toRemove = v["end"] - v["begin"] + 1;
+                var toRemove = v["end"] - v["begin"] + 1;
                 // beware: splice modifies the array
-                removed = outputMDLines.splice(
+                var removed = outputMDLines.splice(
                     v["begin"] + lineOffset, toRemove, ...tocLines);
                 lineOffset += -removed.length + tocLines.length;
                 changed = true;
             }
         }
-        
+        // insert ToC(s) from tocTracker
         tocTracker.forEach(insertToc);
+        
+        // insert "top" anchor if addBL="top"
+        if (addBL == "top") {
+            var l = '<a ' + anchorAttribute + '="top"></a>\n';  // Backlink to top anchor
+            var removed = outputMDLines.splice(firstMDLine, 0, l);
+        }
 
         outputMD = outputMDLines.join('\n');
 
@@ -234,6 +268,7 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID) {
                 + "You can also use a single [TOC] instead.");
         }
     } else {
+        // ToC-only mode
         outputMD = toc + '\n';
     }
 

@@ -19,8 +19,8 @@
         <meta name="twitter:title" content="gh-toc" />
         <meta name="twitter:description" content="Quickly create Table-of-Content Markdown for GitHub Markdown files." />
         <meta name="twitter:image" content="https://moonbase59.github.io/gh-toc/gh-toc.png" />
-        <meta property="article:published_time" content="2024-04-04T20:09:22+02:00" />
-        <meta property="article:modified_time" content="2024-04-04T20:09:22+02:00" />
+        <meta property="article:published_time" content="2024-04-06T03:43:40+02:00" />
+        <meta property="article:modified_time" content="2024-04-06T03:43:40+02:00" />
         <meta property="article:author" content="Moonbase59" />
 
         <style>
@@ -49,6 +49,7 @@
                 var maxHeading = document.querySelector("#maxHeading").value;
                 var fullMD = document.querySelector("#fullMD").checked;
                 var addAnchors = document.querySelector("#addAnchors").value;
+                var addBL = document.querySelector("#addBL").value;
                 var useID = document.querySelector("#useID").checked;
                 
                 if(minHeading > maxHeading) {
@@ -56,20 +57,20 @@
                     return;
                 }
                 
-                document.querySelector("#outputMD").value = tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, useID);
+                document.querySelector("#outputMD").value = tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, addBL, useID);
             }
         </script>
     </head>
     <body>
         <h1>gh-toc</h1>
         <p>Quickly create Table-of-Content Markdown for GitHub Markdown files. (<a href="https://github.com/moonbase59/gh-toc">Source code</a>)</p>
-        <h2>Overview</h2>
-        <blockquote>I could never find an easy to use, online table-of-content maker for GitHub Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.<br>— <em>(Words from the <a href="https://imthenachoman.github.io/nGitHubTOC/">original creator</a>)</em></blockquote>
-        <p>I agree. This fork has lots of bugfixes and additional features:</p>
+        <blockquote><em>I could never find a <strong>do-it-all</strong>, easy to use, online Table-of-Content maker for GitHub (and other) Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.</em></blockquote>
+        <p>Indeed. This fork has bugfixes and lots of <em>additional features:</em></p>
         <ul>
             <li>Full Unicode support, all international characters.</li>
-            <li>Much better code block support (backticks, tildes, differing number of them).</li>
-            <li>YAML front matter support.</li>
+            <li>Much better code block support (indented, backticks, tildes, different number of backticks/tildes).</li>
+            <li>YAML/Jekyll/LaTeX front matter support.</li>
+            <li>GitHub, HTML and <a href="https://pandoc.org/" target="_blank">Pandoc</a>/<a href="https://michelf.ca/projects/php-markdown/extra/" target="_blank">PHP Markdown Extra</a>-compatible anchor generation for easy navigation.</li>
             <li>Options galore—hover mouse over checkbox labels for longer description.</li>
         </ul>
         <p>Try the <a href="https://github.com/Moonbase59/gh-toc/blob/master/testing.md?plain=1">testing.md</a> example: <strong>No other online ToC-Generator I could find handled this correctly!</strong></p>
@@ -86,7 +87,8 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <label for="minHeading">Minimum heading level:</label>
+                    <label for="minHeading"
+                        title="Minimum heading level to include in ToC">Min heading:</label>
                     
                     <select id="minHeading">
                         <option value="1">1</option>
@@ -99,7 +101,8 @@
                     
                     &ensp;
                     
-                    <label for="maxHeading">Maximum heading level:</label>
+                    <label for="maxHeading"
+                        title="Maximum heading level to include in ToC">Max heading:</label>
                     
                     <select id="maxHeading">
                         <option value="1">1</option>
@@ -113,7 +116,7 @@
                     &ensp;
                     
                     <label for="fullMD"
-                        title="Output the full Markdown file? Needs <!-- ToC begin/end --> comments for inserting the ToC.">Full MD:</label>
+                        title="Output the full Markdown file? Needs &lt;!-- ToC begin/end --&gt; or [TOC] comments for inserting the ToC.">Full MD:</label>
                     
                     <input type="checkbox" id="fullMD" name="fullMD" />
                     
@@ -121,11 +124,20 @@
                     
                     <label for="addAnchors" title="Generate/overwrite anchors? (— for GitHub, HTML or {#…} for other uses)">Anchors:</label>
                     
-                    <!--<input type="checkbox" id="addAnchors" name="addAnchors" />-->
                     <select id="addAnchors">
                         <option value="none" selected>—</option>
                         <option value="HTML">HTML</option>
                         <option value="braces">{#…}</option>
+                    </select>
+                    
+                    &ensp;
+                    
+                    <label for="addBL" title="Generate backlinks? (—=no, ↑ToC=Table of Contents, or ↑Top=Top of document)">BL:</label>
+                    
+                    <select id="addBL">
+                        <option value="none" selected>—</option>
+                        <option value="toc">↑ ToC</option>
+                        <option value="top">↑ Top</option>
                     </select>
                     
                     &ensp;

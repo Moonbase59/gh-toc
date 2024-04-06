@@ -1,6 +1,6 @@
 ---
 title: testing.md – Testing edge cases for gh-toc
-date: 2024-04-05
+date: 2024-04-06
 # A YAML comment that could be mis-interpreted as a H1 heading
 ---
 # gh-toc {#gh-toc}
