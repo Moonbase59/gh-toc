@@ -10,8 +10,9 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, addBL, useID
     // addBL (backlink) can be: "none", "toc", "top"
 
     // These backlinks can be added to headings; the "blank" is U+2002, an &ensp;
-    var goToc = ' <a href="#toc" class="goToc">↑</a>';
-    var goTop = ' <a href="#top" class="goTop">↑</a>';
+    // Arrows: U+21E7 ⇧, U+2191 ↑, U+1F51D+U+FE0E 🔝︎
+    var goToc = ' <a href="#toc" class="goToc">⇧</a>';
+    var goTop = ' <a href="#top" class="goTop">⇧</a>';
     var firstMDLine = -1;  // no first real MD line found yet
 
     var anchorAttribute = "name";
