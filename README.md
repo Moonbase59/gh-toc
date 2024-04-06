@@ -51,6 +51,7 @@ in the Markdown file, which Pandoc then converts to this HTML:
    - Maximum heading level: 6
    - Full MD: ☑
    - Anchors: HTML
+   - BL: ↑ToC (or any other)
    - Use id: ☐
 3. Click `TOC it!` and watch the magic.
 4. Copy-paste the contents of the _right_ input box into a text editor and save as `testing-html-anchors.md`.
@@ -83,6 +84,7 @@ in the Markdown file, which Pandoc then converts to this HTML:
    - Maximum heading level: 6
    - Full MD: ☑
    - Anchors: {#…}
+   - BL: —
    - Use id: ☐
 3. Click `TOC it!` and watch the magic.
 4. Copy-paste the contents of the _right_ input box into a text editor and save as `testing-curly-anchors.md`.
@@ -96,7 +98,7 @@ in the Markdown file, which Pandoc then converts to this HTML:
 
 ## More features
 
-Also try the other options, like auto-generated backlinks to Top or ToC next to each heading! Backlinks use CSS classes `goTop` and `goToc`, so you can even _style_ them!
+Also try the other options, like auto-generated backlinks to ↑Top or ↑ToC next to each heading! Backlinks use CSS classes `goTop` and `goToc`, so you can even _style_ them!
 
 ## Known problems
 
