@@ -2,13 +2,15 @@
 
 Quickly create Table-of-Content Markdown for GitHub Markdown files.
 
-## <a name="table-of-content-made-with-gh-toc"></a>Table of Content _(made with gh-toc)_ <a href="#toc" class="goToc">↑</a>
+![gh-toc.png](gh-toc.png)
+
+## <a name="table-of-contents-made-with-gh-toc"></a>Table of Contents _(made with gh-toc)_ <a href="#toc" class="goToc">↑</a>
 
 <!-- ToC begin -->
 <a name="toc"></a>
 
 - [gh-toc](#gh-toc)
-  - [Table of Content _(made with gh-toc)_](#table-of-content-made-with-gh-toc)
+  - [Table of Contents _(made with gh-toc)_](#table-of-contents-made-with-gh-toc)
   - [Overview](#overview)
   - [Test file](#test-file)
   - [Conversion to HTML, using auto-generated HTML anchors](#conversion-to-html-using-auto-generated-html-anchors)
@@ -154,9 +156,9 @@ Also try the other options, like auto-generated backlinks to ↑Top or ↑ToC ne
 
 It all started out because I looked for a quick way to generate a GitHub README Table-of-Contents. Looking around, most solutions required installing some software my system. No problem so far, but I work on a lot of machines, different operating systems and all. So it would never simply be _available_.
 
-Ok, a web page it should be. Accessible everywhere, and _simple_. Copy-paste is now witchcraft, after all: <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>Ctrl</kbd>+<kbd>C</kbd> for copy, then <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>Ctrl</kbd>+<kbd>V</kbd> to paste back.
+Ok, a web page it should be. Accessible everywhere, and _simple_. Copy-paste is no witchcraft, after all: <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>Ctrl</kbd>+<kbd>C</kbd> for copy, then <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>Ctrl</kbd>+<kbd>V</kbd> to paste back.
 
-Looking around, I liked [IMTheNachoMan’s nGitHubTOC](https://imthenachoman.github.io/nGitHubTOC/) best, but quickly stumbled on problems with it: Code block and underline issues, for instance. Then I currently live in Germany, and we have some funny characters like <kbd>äöüßÄÖÜ</kbd>. Oh yes, and now the capital <kbd>ẞ</kbd>. Which didn’t work. At least it didn’t generate anchors that would work in GitHub.
+Looking around, I liked [IMTheNachoMan’s nGitHubTOC](https://imthenachoman.github.io/nGitHubTOC/) best, but quickly stumbled upon problems with it: Code block and underline issues, for instance. Then I currently live in Germany, and we have some funny characters like <kbd>äöüßÄÖÜ</kbd>. Oh yes, and now the capital <kbd>ẞ</kbd>. Which didn’t work. At least it didn’t generate anchors that would work in GitHub.
 
 So I decided to _fork_ the project and fix some bugs… **And the story began.**
 
@@ -170,7 +172,7 @@ Oops, it messed up my long LaTeX _front matter_! Oh, and I’d use that for date
 
 Some people in various forums had hot discussions about whether to use `name` or `id` in HTML anchors. Hmm… **Why not have an option to _switch_ between these?**
 
-Talking _anchors_, **why not include an automatic anchor to the ToC** (because I always forgot to). While we’re at it, think of people wanting to **go to the Top** of the document, too.
+Talking _anchors_, **why not include an automatic anchor for the ToC** (because I always forgot to). While we’re at it, think of people wanting to **go to the Top** of the document, too. (Auto-generated when you use _BL: ↑Top_.)
 
 **Not everything is GitHub.** So let’s _use_ the GitHub anchors and find a way to include anchors _on the actual headings_ when _not_ using GitHub (which does it automatically when previewing Markdown files). It actually took a while, and lots of reading and testing, to find a way that would work "everywhere", from GitHub to Pandoc-generated HTML, because Markdown doesn’t support it natively. Fortunately it _does_ support using HTML code, so the most compatible way could be found. **_Anchor_ was created.** You can switch between no anchors, HTML, and the curly bracket notation.
 
@@ -178,11 +180,11 @@ Now what **frustrates** me and others most when reading my ultralong READMEs? Ri
 
 I’m _so_ happy that I can copy-paste my README into _gh-toc_ now, select options, and out comes a readily-usable, linked and backlinked file, you wouldn’t believe it!
 
-Oops. Generated all this niche anchor and backlink stuff, uploaded my README, and now need to change it and output it _without_ anchors and backlinks. And _gh-toc_ would _leave the old stuff all in!_ Okay, next step: **Auto-cleanup of artifacts left over from previous runs!** This works even on headings _you don’t touch this time._ Let’s say you output heading levels 1–6 last time, generating anchors and backlinks for them, and now you only want to output levels 2–6. Normally, _gh-toc_ will only touch as few of your Markdown code lines as possible, but in this case it makes sense to also remove the now-obsolete level 1 anchors & backlinks from the previous run.
+Oops. Generated all this nice anchor and backlink stuff, uploaded my README, and now need to change it and output it _without_ anchors and backlinks. And _gh-toc_ would _leave the old stuff all in!_ Okay, next step: **Auto-cleanup of artifacts left over from previous runs!** This works even on headings _you don’t touch this time._ Let’s say you output heading levels 1–6 last time, generating anchors and backlinks for them, and now you only want to output levels 2–6. Normally, _gh-toc_ will only touch as few of your Markdown code lines as possible, but in this case it makes sense to also remove the now-obsolete level 1 anchors & backlinks from the previous run.
 
 Now I’m _really_ happy. Until I find the next feature, that is…
 
-> **"And _now_ you know the rest of the story! (So far.)**
+> **And _now_ you know the rest of the story! (So far.)**
 
 
 ## <a name="known-problems"></a>Known problems <a href="#toc" class="goToc">↑</a>
