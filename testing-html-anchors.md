@@ -38,7 +38,7 @@ Let’s check if these coincide with whatever GitHub Markdown comes up with!
   - [Markdown](#markdown)
     - [Some _emphasized_ text](#some-emphasized-text)
     - [Some **bold** text](#some-bold-text)
-    - [Some ~~strikethrough~ text](#some-strikethrough-text)
+    - [Some ~~strikethrough~~ text](#some-strikethrough-text)
     - [Anchors {#anchors}](#anchors-anchors)
     - [Anchors](#anchors)
   - [More character codes](#more-character-codes)
@@ -107,7 +107,7 @@ You can backlink to your generated [Table of Contents](#toc) anywhere using
 
 ### <a name="some-emphasized-text"></a>Some _emphasized_ text <a href="#toc" class="goToc">↑</a>
 ### <a name="some-bold-text"></a>Some **bold** text <a href="#toc" class="goToc">↑</a>
-### <a name="some-strikethrough-text"></a>Some ~~strikethrough~ text <a href="#toc" class="goToc">↑</a>
+### <a name="some-strikethrough-text"></a>Some ~~strikethrough~~ text <a href="#toc" class="goToc">↑</a>
 ### <a name="anchors-anchors"></a>Anchors {#anchors} <a href="#toc" class="goToc">↑</a>
 ### <a name="anchors"></a>Anchors <a href="#toc" class="goToc">↑</a>
 

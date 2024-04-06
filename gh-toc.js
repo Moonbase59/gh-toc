@@ -124,13 +124,23 @@ function tocIt(inputMD, minHeading, maxHeading, fullMD, addAnchors, addBL, useID
         }
 
         // Now find and handle ATX headings
-        var match = /^ {0,3}(#+) (.*?)( \{.*\})?$/.exec(inputMDLine);
+        var match = /^( {0,3})(#+) (.*?)( \{.*\})?$/.exec(inputMDLine);
         // match: $1=ATX header, $2=title, $3=last {} block incl. blank before
         if (!codeTagEndExpected && match) {
-            var headingLevel = match[1].length;
-            var headingTitle = match[2].replace(/<.*?>/g, "");
-            var headingAttrib = match[3] || "";
+            var headingLead = match[1] || "";
+            var headingATX = match[2];
+            var headingLevel = match[2].length;
+            var headingTitle = match[3] || "";
+            var headingAttrib = match[4] || "";
 
+            // replace leftovers from previous anchor/backlink generation runs
+            headingTitle = match[3].replaceAll(goToc, "");
+            headingTitle = headingTitle.replaceAll(goTop, "");
+            headingTitle = headingTitle.replaceAll(/<.*?>/g, "");
+            // rewrite cleaned input line for ALL headings, even if not used later
+            inputMDLines[line] = 
+                headingLead + headingATX + " " + headingTitle + headingAttrib;
+            
             if(headingLevel < minHeading || headingLevel > maxHeading) {
                 continue;
             }
