@@ -58,7 +58,7 @@ Note _gh-toc_ works with ATX-type headings (`###`). It doesn’t try to parse fo
 
 ## <a name="conversion-to-html-using-auto-generated-html-anchors"></a>Conversion to HTML, using auto-generated HTML anchors <a href="#toc" class="goToc">⇧</a>
 
-This syntax is compatible with almost anything that generates HTML from Markdown, but the HTML is slightly harder to read. You can select if you want `name=` (default) or `id=` HTML anchors generated.
+This syntax is compatible with GitHub and almost anything that generates HTML from Markdown, but the HTML is slightly harder to read. You can select if you want `name=` (default) or `id=` HTML anchors generated.
 
 It will generate HTML anchors of the form
 
