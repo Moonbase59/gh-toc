@@ -6,7 +6,7 @@ Quickly create Table-of-Content Markdown for GitHub Markdown files.
 
 > I could never find a _**do-it-all**_, easy to use, online Table-of-Content maker for GitHub (and other) Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary. 
 
-Indeed. This [fork](https://imthenachoman.github.io/nGitHubTOC/) has bugfixes and lots of _additional features:_
+Indeed. This began as a [fork](https://imthenachoman.github.io/nGitHubTOC/) and has meanwhile evolved to a _full-fledged solution:_
 
 - Full Unicode support, all international characters.
 - Better handling of (hopefully) all underscore cases.
@@ -99,6 +99,18 @@ in the Markdown file, which Pandoc then converts to this HTML:
 ## More features
 
 Also try the other options, like auto-generated backlinks to ↑Top or ↑ToC next to each heading! Backlinks use CSS classes `goTop` and `goToc`, so you can even _style_ them!
+
+**Generated Markdown using _Anchors: HTML_ and _BL: ↑ToC_:**
+
+```markdown
+# <a name="gh-toc"></a>gh-toc <a href="#toc" class="goToc">↑</a>
+```
+
+**Generated Markdown using _Anchors: {#…}_ and _BL: ↑ToC_:**
+
+```markdown
+# gh-toc <a href="#toc" class="goToc">↑</a> {#gh-toc}
+```
 
 ## Known problems
 
