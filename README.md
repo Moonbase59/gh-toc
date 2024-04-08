@@ -121,7 +121,7 @@ in the Markdown file, which Pandoc then converts to this HTML:
    ```bash
    pandoc -s -f markdown+yaml_metadata_block -t html testing-curly-anchors.md -o testing-curly-anchors.html
    ```
-6. Open [`testing-curly-anchors.html`](https://moonbase59.github.io/gh-toc/testing-curly-anchors.html) in your favourite browser and test the links.
+6. Open [`testing-curly-anchors.html`](https://moonbase59.github.io/gh-toc/testing-curly-anchors.html) in your favourite browser and test the links. This example intentionally has no backlinks. Compare with the [HTML anchors example](https://moonbase59.github.io/gh-toc/testing-html-anchors.html) and you’ll see how much you miss them!
 
 **Voilà again!**
 
