@@ -1,0 +1,25 @@
+/* gh-toc.css
+ * 
+ * An example for styling the backlinks.
+ * 
+ * Let’s make them 50% opaque and remove the link underline.
+ * Let’s also change the "Top" symbol. (An awful hack, but it works.)
+ * 
+ */
+
+.goToc {
+    text-decoration: none;
+    opacity: 0.5;
+}
+
+.goTop {
+    position: absolute;
+    visibility: hidden;
+}
+
+.goTop::before {
+    content: '🔝︎';  /* U+1F51D + U+FE0E */
+    text-decoration: none;
+    opacity: 0.5;
+    visibility: visible;
+}

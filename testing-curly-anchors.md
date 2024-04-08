@@ -1,7 +1,13 @@
 ---
-title: testing.md – Testing edge cases for gh-toc
-date: 2024-04-06
-# A YAML comment that could be mis-interpreted as a H1 heading
+title: testing.md
+subtitle: Testing edge cases for gh-toc
+author: Matthias C. Hormann, a.k.a. Moonbase59
+date: 2024-04-08
+lang: en
+# A YAML comment that could be mis-interpreted as a H1 heading.
+# Use Pandoc’s default template, but also include our styling example CSS.
+document-css: true
+css: gh-toc.css
 ---
 # gh-toc {#gh-toc}
 

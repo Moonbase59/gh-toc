@@ -21,6 +21,7 @@ Quickly create Table-of-Content Markdown for GitHub Markdown files.
     - [From simple Table of Contents…](#from-simple-table-of-contents)
     - [… to full-fledged Markdown with anchors and backlinks!](#-to-full-fledged-markdown-with-anchors-and-backlinks)
     - [Warning if ToC cannot be inserted into full Markdown](#warning-if-toc-cannot-be-inserted-into-full-markdown)
+    - [Styling the backlinks with CSS](#styling-the-backlinks-with-css)
   - [The evolution of a "simple" tool](#the-evolution-of-a-simple-tool)
   - [Known problems](#known-problems)
   - [The Real Magic](#the-real-magic)
@@ -83,7 +84,7 @@ in the Markdown file, which Pandoc then converts to this HTML:
 4. Copy-paste the contents of the _right_ input box into a text editor and save as `testing-html-anchors.md`.
 5. Convert to HTML using [_Pandoc_](https://pandoc.org/):
    ```bash
-   pandoc -f markdown-auto_identifiers -t html testing-html-anchors.md -o testing-html-anchors.html
+   pandoc -s -f markdown-auto_identifiers+yaml_metadata_block -t html testing-html-anchors.md -o testing-html-anchors.html
    ```
 6. Open [`testing-html-anchors.html`](https://moonbase59.github.io/gh-toc/testing-html-anchors.html) in your favourite browser and test the links.
 
@@ -118,7 +119,7 @@ in the Markdown file, which Pandoc then converts to this HTML:
 4. Copy-paste the contents of the _right_ input box into a text editor and save as `testing-curly-anchors.md`.
 5. Convert to HTML using [_Pandoc_](https://pandoc.org/):
    ```bash
-   pandoc -f markdown -t html testing-curly-anchors.md -o testing-curly-anchors.html
+   pandoc -s -f markdown+yaml_metadata_block -t html testing-curly-anchors.md -o testing-curly-anchors.html
    ```
 6. Open [`testing-curly-anchors.html`](https://moonbase59.github.io/gh-toc/testing-curly-anchors.html) in your favourite browser and test the links.
 
@@ -151,6 +152,38 @@ Also try the other options, like auto-generated backlinks to ⇧Top or ⇧ToC ne
 ### <a name="warning-if-toc-cannot-be-inserted-into-full-markdown"></a>Warning if ToC cannot be inserted into full Markdown <a href="#toc" class="goToc">⇧</a>
 
 ![screenshot-warning](screenshot-warning.png)
+
+### <a name="styling-the-backlinks-with-css"></a>Styling the backlinks with CSS <a href="#toc" class="goToc">⇧</a>
+
+Yes, you can! Generated backlinks use the classes `goToc` and `goTop`, respectively. The `testing.md` document includes my example [`gh-toc.css`](gh-toc.css) so you can see the effect:
+
+```css
+/* gh-toc.css
+ * 
+ * An example for styling the backlinks.
+ * 
+ * Let’s make them 50% opaque and remove the link underline.
+ * Let’s also change the "Top" symbol. (An awful hack, but it works.)
+ * 
+ */
+
+.goToc {
+    text-decoration: none;
+    opacity: 0.5;
+}
+
+.goTop {
+    position: absolute;
+    visibility: hidden;
+}
+
+.goTop::before {
+    content: '🔝︎';  /* U+1F51D + U+FE0E */
+    text-decoration: none;
+    opacity: 0.5;
+    visibility: visible;
+}
+```
 
 ## <a name="the-evolution-of-a-simple-tool"></a>The evolution of a "simple" tool <a href="#toc" class="goToc">⇧</a>
 
