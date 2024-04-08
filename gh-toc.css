@@ -1,13 +1,28 @@
 /* gh-toc.css
  * 
- * An example for styling the backlinks.
+ * A wild example for styling the backlinks.
  * 
- * Let’s make them 50% opaque and remove the link underline.
- * Let’s also change the "Top" symbol. (An awful hack, but it works.)
+ * Let’s go absolutely crazy here and replace "goToc" (⇧, U+21E7) with our
+ * "gh-toc" SVG image, since there is no Unicode symbol for an unordered list.
+ * We will also replace "goTop" (⇧, U+21E7) with the "🔝︎" symbol (U+1F51D + U+FE0E).
+ * Let’s also make both 50% transparent and remove the link underline.
  * 
+ * A simpler approach would be using JUST 50% transparency and underline removal:
+ *   .goToc {
+ *       text-decoration: none;
+ *       opacity: 0.5;
+ *   }
  */
 
 .goToc {
+    position: absolute;
+    visibility: hidden;
+}
+
+.goToc::before {
+    /* Embed "gh-toc.svg" here; URL-encoding needed! */
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' focusable='false' role='img' viewBox='0 0 16 16' width='16' height='16' fill='currentColor' style='display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible'%3E%3Cpath d='M5.75 2.5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-6a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM2 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z'%3E%3C/path%3E%3C/svg%3E%0A");
+    visibility: visible;
     text-decoration: none;
     opacity: 0.5;
 }

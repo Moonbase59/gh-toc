@@ -5,8 +5,9 @@ author: Matthias C. Hormann, a.k.a. Moonbase59
 date: 2024-04-08
 lang: en
 # A YAML comment that could be mis-interpreted as a H1 heading.
-# Use Pandoc’s default template, but also include our styling example CSS.
+# Use Pandoc’s default template, even if using our styling example CSS.
 document-css: true
+# Include the following for a wild CSS hack!
 css: gh-toc.css
 ---
 # <a name="gh-toc"></a>gh-toc <a href="#toc" class="goToc">⇧</a>

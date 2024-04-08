@@ -155,15 +155,14 @@ Also try the other options, like auto-generated backlinks to ⇧Top or ⇧ToC ne
 
 ### <a name="styling-the-backlinks-with-css"></a>Styling the backlinks with CSS <a href="#toc" class="goToc">⇧</a>
 
-Yes, you can! Generated backlinks use the classes `goToc` and `goTop`, respectively. The `testing.md` document includes my example [`gh-toc.css`](gh-toc.css) so you can see the effect:
+Yes, you can! Generated backlinks use the classes `goToc` and `goTop`, respectively. The `testing.md` document includes my really wild example [`gh-toc.css`](gh-toc.css) so you can see the effects possible.
+
+A simpler approach might be just setting the up arrows to 50% opacity and remove the link underlines:
 
 ```css
-/* gh-toc.css
- * 
- * An example for styling the backlinks.
+/* An example for styling the backlinks.
  * 
  * Let’s make them 50% opaque and remove the link underline.
- * Let’s also change the "Top" symbol. (An awful hack, but it works.)
  * 
  */
 
@@ -173,15 +172,8 @@ Yes, you can! Generated backlinks use the classes `goToc` and `goTop`, respectiv
 }
 
 .goTop {
-    position: absolute;
-    visibility: hidden;
-}
-
-.goTop::before {
-    content: '🔝︎';  /* U+1F51D + U+FE0E */
     text-decoration: none;
     opacity: 0.5;
-    visibility: visible;
 }
 ```
 
@@ -216,6 +208,10 @@ I’m _so_ awfully happy. I can now copy-paste my README into _gh-toc_, select o
 Oops. Generated all this nice anchor and backlink stuff, uploaded my README, and now need to change it and output it _without_ anchors and backlinks. And _gh-toc_ would _leave the old stuff all in!_ Okay, next step: **Auto-cleanup of artifacts left over from previous runs!** This works even on headings _you don’t touch this time._ Let’s say you output heading levels 1–6 last time, generating anchors and backlinks for them, and now you only want to output levels 2–6. Normally, _gh-toc_ will only touch as few of your Markdown code lines as possible, but in this case it makes sense to also remove the now-obsolete level 1 anchors & backlinks from the previous run.
 
 Now I’m _really_ happy. Until I find the next feature, that is…
+
+I _love_ CSS. And I’d maybe like a little ![](gh-toc.svg) symbol better than the arrow. Hmm. Unicode (currently) has no symbol for an unordered list, so let’s create one, `gh-toc.svg`. But then, how to get that into CSS? A little CSS hacking might be possible, after all… Let’s show how I’ve done it, and include the [sample CSS](gh-toc.css) in the HTML example.
+
+_Q.E.D._: Anything goes with CSS!
 
 > **And _now_ you know the rest of the story! (So far.)**
 
