@@ -1,5 +1,7 @@
 # <a name="gh-toc"></a>gh-toc <a href="#toc" class="goToc">⇧</a>
 
+**If you like what you got, please consider to [![Donate with Paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=PBPR63362LDEU). Thank you! ❤️**
+
 Quickly create Table-of-Content Markdown for GitHub Markdown files.
 
 ![gh-toc-no-border.png](gh-toc-no-border.png)
@@ -30,7 +32,7 @@ Quickly create Table-of-Content Markdown for GitHub Markdown files.
 
 ## <a name="overview"></a>Overview <a href="#toc" class="goToc">⇧</a>
 
-> I could never find a _**do-it-all**_, easy to use, online Table-of-Content maker for GitHub (and other) Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary. 
+> I could never find a _**do-it-all**_, easy to use, online Table-of-Content maker for GitHub (and other) Markdown files. There were many solutions that required downloading or installing something on my computer. For such a trivial task I felt that was unnecessary.
 
 Indeed. This began as a [fork](https://imthenachoman.github.io/nGitHubTOC/) and has meanwhile evolved to a _full-fledged solution:_
 
@@ -161,9 +163,9 @@ A simpler approach might be just setting the up arrows to 50% opacity and remove
 
 ```css
 /* An example for styling the backlinks.
- * 
+ *
  * Let’s make them 50% opaque and remove the link underline.
- * 
+ *
  */
 
 .goToc {
